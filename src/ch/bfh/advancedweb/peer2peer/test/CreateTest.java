@@ -13,7 +13,7 @@ public class CreateTest {
 	public void test() {
 		
 		User user = new User();
-		user.setFirstname("Christian");
+		user.setFirstname("Martin");
 		user.setLastname("Moser");
 
 		EntityManager em = Persistence.createEntityManagerFactory(

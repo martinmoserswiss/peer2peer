@@ -1,0 +1,12 @@
+
+.classpath
+
+.project
+
+*.prefs
+
+.settings/*
+
+build/*
+
+WebContent/META-INF/MANIFEST.MF

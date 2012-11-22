@@ -19,7 +19,7 @@ public class CreateTest {
 		EntityManager em = Persistence.createEntityManagerFactory(
 				"ch.bfh.advancedweb.peer2peer.model").createEntityManager();
 
-		//hi martin
+		//
 		em.getTransaction().begin();
 		em.persist(user);
 		em.getTransaction().commit();

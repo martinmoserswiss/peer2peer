@@ -11,6 +11,11 @@ import ch.bfh.advancedweb.peer2peer.model.User;
 
 @ManagedBean
 @SessionScoped
+/**
+ * 
+ * @author Martin Moser
+ *
+ */
 public class LoginController implements Serializable{
 
 	private static final long serialVersionUID = 1L;

@@ -1,32 +1,30 @@
 package ch.bfh.advancedweb.peer2peer.test;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.Persistence;
+import javax.persistence.Query;
 
+import org.junit.Assert;
 import org.junit.Test;
 
 import ch.bfh.advancedweb.peer2peer.model.User;
 
-/**
- * 
- * @author Martin Moser
- *
- */
-public class CreateTest {
+public class ReadTest {
 
 	@Test
 	public void test() {
-		
-		User user = new User();
-		user.setFirstname("Martin");
-		user.setLastname("Moser");
 
 		EntityManager em = Persistence.createEntityManagerFactory(
 				"ch.bfh.advancedweb.peer2peer.model").createEntityManager();
 
-		//
-		em.getTransaction().begin();
-		em.persist(user);
-		em.getTransaction().commit();
+		Query q = em.createQuery("SELECT  FROM User");
+		List<?> foundUsers = q.getResultList();
+		if(foundUsers != null){
+			User firstUser = (User)foundUsers.get(0);
+			Assert.assertTrue(firstUser.getFirstname().equals("Martin"));
+		}
 	}
+
 }

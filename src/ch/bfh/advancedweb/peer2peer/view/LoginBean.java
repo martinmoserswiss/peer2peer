@@ -13,7 +13,11 @@ import ch.bfh.advancedweb.peer2peer.controller.UserController;
 @SessionScoped
 public class LoginBean implements Serializable {
 	
-	@ManagedProperty(value="#{login}")
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	@ManagedProperty(value="#{LoginBean}")
 	private UserController userController;
 	private String email;
 	private String password;
@@ -32,7 +36,7 @@ public class LoginBean implements Serializable {
 			this.message = "Successful";
 		}
 		else{
-			this.message = "Error";
+			this.message = "Not right password";
 		}
 		return null;
 	}
@@ -41,16 +45,16 @@ public class LoginBean implements Serializable {
 		return this.message;
 	}
 
-	public String getUsername() {
-		return email;
+	public String getEmail() {
+		return this.email;
 	}
 
-	public void setUsername(String username) {
-		this.email = username;
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 	public String getPassword() {
-		return password;
+		return this.password;
 	}
 
 	public void setPassword(String password) {

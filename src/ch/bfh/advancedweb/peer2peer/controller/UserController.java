@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
 import javax.persistence.EntityManager;
 import javax.persistence.Persistence;
@@ -17,21 +18,22 @@ import ch.bfh.advancedweb.peer2peer.model.User;
 @SessionScoped
 public class UserController implements Serializable {
 	
-	EntityManager em;
+	@ManagedProperty(value="#{user}")
 	boolean isLoggedIn = false;
 
 	public UserController(){
 		
 	}
 	
-	public void instantEntityManager(){
-		EntityManager em = Persistence.createEntityManagerFactory(
-				"ch.bfh.advancedweb.peer2peer.model").createEntityManager();
-	}
-	
 	public boolean isValid(String email, String password){
 		
-		Query q = em.createQuery("select a from User a");
+		EntityManager em = Persistence.createEntityManagerFactory(
+				"ch.bfh.advancedweb.peer2peer.model").createEntityManager();
+		
+		Query q = em.createQuery("select u from User AS u where u.email = :email AND u.password = :password");
+		q.setParameter("email", email);
+		q.setParameter("password", password);
+		
 		@SuppressWarnings("unchecked")
 		List<User> foundUsers = q.getResultList();
 		if(foundUsers != null){

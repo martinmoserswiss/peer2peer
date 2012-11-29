@@ -30,7 +30,7 @@ public class User implements Serializable {
 	private String city;
 	private String street;
 	private int postalcode;
-	private int phone;
+	private String phone;
 	private double income;
 	private double expenses;
 	private int exsisting_credits;
@@ -120,11 +120,11 @@ public class User implements Serializable {
 		this.postalcode = postalcode;
 	}
 	
-	public int getPhone() {
+	public String getPhone() {
 		return phone;
 	}
 	
-	public void setPhone(int phone) {
+	public void setPhone(String phone) {
 		this.phone = phone;
 	}
 	

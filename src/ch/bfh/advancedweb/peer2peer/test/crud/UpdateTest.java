@@ -1,4 +1,4 @@
-package ch.bfh.advancedweb.peer2peer.test;
+package ch.bfh.advancedweb.peer2peer.test.crud;
 
 import java.util.List;
 
@@ -6,6 +6,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
 
+import org.junit.Assert;
 import org.junit.Test;
 
 import ch.bfh.advancedweb.peer2peer.model.User;
@@ -14,7 +15,7 @@ import ch.bfh.advancedweb.peer2peer.model.User;
  * @author Martin Moser
  * 
  */
-public class DeleteTest {
+public class UpdateTest {
 
 	@Test
 	public void test() {
@@ -26,12 +27,15 @@ public class DeleteTest {
 		@SuppressWarnings("unchecked")
 		List<User> foundUsers = q.getResultList();
 		User firstUser = foundUsers.get(0);
-		// Assert.assertTrue(firstAuthor.getLastname().equals("Tolkien"));
 
 		// Write access needs a transaction
 		em.getTransaction().begin();
-		em.remove(firstUser);
+		firstUser.setFirstname("Martin");
 		em.getTransaction().commit();
+		// Entity is persisted automatically after commit because it is managed
+		// by jpa.
+
+		Assert.assertTrue(firstUser.getFirstname().equals("Martin"));
 	}
 
 }

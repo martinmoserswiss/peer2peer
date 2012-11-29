@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+	<h:head>
+		<title>Welcome</title>
+	</h:head>
+	<h:body>
+		<h:form id="main">
+		<table>
+				<tr>
+					<td><h:outputText value="Email"/></td>
+					<td><h:inputText id="name" value="#{login.email}" required="true"/></td>
+				</tr>
+				<tr>
+					<td><h:outputText value="Password"/></td>
+					<td><h:inputSecret  id="age" value="#{login.password}"/></td>
+				</tr>
+			</table>
+			<h:commandButton value="Say Hello" action="#{login.login}"/>
+			<p/>
+			<h:outputText value="#{login.message}"/>
+		</h:form>
+	</h:body>
+</html>

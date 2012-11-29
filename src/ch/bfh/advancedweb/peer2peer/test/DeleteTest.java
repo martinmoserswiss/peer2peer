@@ -20,9 +20,9 @@ public class DeleteTest {
 	public void test() {
 
 		EntityManager em = Persistence.createEntityManagerFactory(
-				"ch.bfh.swos.bookapp.model").createEntityManager();
+				"ch.bfh.advancedweb.peer2peer.model").createEntityManager();
 
-		Query q = em.createQuery("select a from Author a");
+		Query q = em.createQuery("select a from User a");
 		@SuppressWarnings("unchecked")
 		List<User> foundUsers = q.getResultList();
 		User firstUser = foundUsers.get(0);

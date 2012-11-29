@@ -23,19 +23,19 @@ public class UpdateTest {
 		EntityManager em = Persistence.createEntityManagerFactory(
 				"ch.bfh.advancedweb.peer2peer.model").createEntityManager();
 
-		Query q = em.createQuery("select * from User");
+		Query q = em.createQuery("select a from User a");
 		@SuppressWarnings("unchecked")
 		List<User> foundUsers = q.getResultList();
 		User firstUser = foundUsers.get(0);
 
 		// Write access needs a transaction
 		em.getTransaction().begin();
-		firstUser.setFirstname("Basil");
+		firstUser.setFirstname("Martin");
 		em.getTransaction().commit();
 		// Entity is persisted automatically after commit because it is managed
 		// by jpa.
 
-		Assert.assertTrue(firstUser.getLastname().equals("Basil"));
+		Assert.assertTrue(firstUser.getFirstname().equals("Martin"));
 	}
 
 }

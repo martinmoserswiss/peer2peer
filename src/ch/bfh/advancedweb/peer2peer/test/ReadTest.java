@@ -19,8 +19,9 @@ public class ReadTest {
 		EntityManager em = Persistence.createEntityManagerFactory(
 				"ch.bfh.advancedweb.peer2peer.model").createEntityManager();
 
-		Query q = em.createQuery("SELECT  FROM User");
-		List<?> foundUsers = q.getResultList();
+		Query q = em.createQuery("select a from User a");
+		@SuppressWarnings("unchecked")
+		List<User> foundUsers = q.getResultList();
 		if(foundUsers != null){
 			User firstUser = (User)foundUsers.get(0);
 			Assert.assertTrue(firstUser.getFirstname().equals("Martin"));

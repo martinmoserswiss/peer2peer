@@ -46,6 +46,7 @@ public class UserCRUDTest {
 		
 	}
 	
+	/*
 	@Test
 	public void readUser(){
 		EntityManager em = Persistence.createEntityManagerFactory(
@@ -103,5 +104,7 @@ public class UserCRUDTest {
 		em.getTransaction().commit();
 		
 	}
+	
+	*/
 
 }

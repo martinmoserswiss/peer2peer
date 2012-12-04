@@ -7,15 +7,17 @@ import java.lang.String;
 import javax.persistence.*;
 
 import java.util.Date;
+import java.util.List;
+
 import static javax.persistence.TemporalType.DATE;
 import static javax.persistence.GenerationType.IDENTITY;
+import static javax.persistence.CascadeType.ALL;
 
 /**
  * Entity implementation class for Entity: Project
  *
  */
 @Entity
-
 public class Project implements Serializable {
 
 	   
@@ -33,6 +35,11 @@ public class Project implements Serializable {
 	@Temporal(DATE)
 	private Date creationdate;
 	private static final long serialVersionUID = 1L;
+	
+	private Loan loan;
+	
+	@OneToMany(cascade = ALL, mappedBy = "project")
+	private List<User> users;
 
 	public Project() {
 		super();
@@ -95,6 +102,19 @@ public class Project implements Serializable {
 	
 	public void setCreationdate(Date creationdate) {
 		this.creationdate = creationdate;
+	}
+	
+	public Loan getLoan() {
+		return loan;
+	}
+	public void setLoan(Loan loan) {
+		this.loan = loan;
+	}
+	public List<User> getUsers() {
+		return users;
+	}
+	public void setUsers(List<User> users) {
+		this.users = users;
 	}
    
 }

@@ -1,8 +1,11 @@
 package ch.bfh.advancedweb.peer2peer.model;
 
 import static javax.persistence.GenerationType.IDENTITY;
+import static javax.persistence.CascadeType.ALL;
 
 import java.io.Serializable;
+import java.util.List;
+
 import javax.persistence.*;
 
 /**
@@ -20,6 +23,12 @@ public class Loan implements Serializable {
 	private double interest_rate;
 	private boolean status;
 	private static final long serialVersionUID = 1L;
+	
+	@OneToMany(cascade = ALL, mappedBy = "loan")
+	private List<Project> projects;
+	
+	@OneToMany(cascade = ALL, mappedBy = "loan")
+	private List<User> users;
 
 	public Loan() {
 		super();
@@ -44,6 +53,18 @@ public class Loan implements Serializable {
 
 	public void setStatus(boolean status) {
 		this.status = status;
+	}
+	public List<Project> getProjects() {
+		return projects;
+	}
+	public void setProjects(List<Project> projects) {
+		this.projects = projects;
+	}
+	public List<User> getUsers() {
+		return users;
+	}
+	public void setUsers(List<User> users) {
+		this.users = users;
 	}
    
 }

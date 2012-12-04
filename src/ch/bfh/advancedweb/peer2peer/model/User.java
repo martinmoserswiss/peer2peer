@@ -5,6 +5,7 @@ import java.lang.String;
 
 import javax.persistence.*;
 import java.util.Date;
+
 import static javax.persistence.TemporalType.DATE;
 import static javax.persistence.GenerationType.IDENTITY;
 
@@ -36,6 +37,10 @@ public class User implements Serializable {
 	private int exsisting_credits;
 	@Temporal(DATE)
 	private Date registration_date;
+	
+	private Project project;
+	private Loan loan;
+	
 	private static final long serialVersionUID = 1L;
 
 	public User() {
@@ -158,6 +163,19 @@ public class User implements Serializable {
 	
 	public void setRegistration_date(Date registration_date) {
 		this.registration_date = registration_date;
+	}
+	
+	public Project getProject() {
+		return project;
+	}
+	public void setProject(Project project) {
+		this.project = project;
+	}
+	public Loan getLoan() {
+		return loan;
+	}
+	public void setLoan(Loan loan) {
+		this.loan = loan;
 	}
    
 }

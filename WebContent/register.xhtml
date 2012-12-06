@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"   
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      >
+    <h:body>
+ 
+    	<ui:composition template="/templates/masterLayout.xhtml">
+ 			
+ 			
+ 			
+    		<ui:define name="content">
+    			<!-- working inline javascript -->
+	    		<script>
+	 				$(function(){
+	 					alertHandler.display("success", "test alert.", 500);
+	 				});
+	 			</script>
+	 			
+		
+				<h1 class="header"><span class="highlight">Register</span></h1>
+				<h2 class="header">Create a new account</h2>
+				<p class="description">Welcome to the registration your account.</p>
+				
+				<h:form class="basicForm register">
+					<blockquote style="clear:both;">
+						<h:outputLabel for="email">EMail <b style="font-weight:normal; font-size: 11px;">(serves as accountname)</b> <em>*</em></h:outputLabel>
+						<h:inputText id="email" require="true"/>
+					</blockquote>
+
+					<blockquote style="clear:both;">
+						<h:outputLabel for="c_email">Reenter email adress <em>*</em></h:outputLabel>
+					<h:inputText id="c_email" require="true"/>
+					</blockquote>
+
+					<blockquote style="clear:both;">
+						<h:outputLabel for="password">Password <em>*</em></h:outputLabel>
+					<h:inputSecret id="password" require="true"/>
+					</blockquote>
+
+					<blockquote style="clear:both;">
+						<h:outputLabel for="c_password">Reenter password <em>*</em></h:outputLabel>
+					<h:inputSecret id="c_password" require="true"/>
+					</blockquote>
+
+					<h2 class="header">Contact information</h2>
+					<p class="description">We need to know how to reach you.</p>
+
+
+					<blockquote style="clear:both;">
+						<h:outputLabel for="firstname">First Name <em>*</em></h:outputLabel>
+					<h:inputText id="firstname" require="true"/>
+					</blockquote>
+
+					<blockquote style="clear:both;">
+						<h:outputLabel for="lastname">Last name <em>*</em></h:outputLabel>
+					<h:inputText id="lastname" require="true"/>
+					</blockquote>
+
+					<blockquote style="clear:both;">
+						<h:outputLabel for="">Birthdate </h:outputLabel>
+						<h:inputText id="register_birthdate1" require="true"/>
+						<h:inputText id="register_birthdate2" require="true"/>
+						<h:inputText id="register_birthdate3" require="true"/>
+					</blockquote>
+
+					<blockquote style="clear:both;">
+						<h:outputLabel for="">Country <em>*</em></h:outputLabel>
+					<select name="country" tabindex="10" class="text">
+					<option value="">Select country</option>
+					<option value="CHE">Schweiz</option>
+					<option value="DEU">Deutschland (Bundesrep.)</option>
+					</select>					
+					</blockquote>
+
+					<blockquote style="clear:both;">
+						<h:outputLabel for="city">City <em>*</em></h:outputLabel>
+					<h:inputText id="city" require="true"/>
+					</blockquote>
+
+					<blockquote style="clear:both;">
+						<h:outputLabel for="address">Street <em>*</em></h:outputLabel>
+					<h:inputText id="address" require="true"/>
+					</blockquote>
+
+					<blockquote style="clear:both;">
+						<h:outputLabel for="postalcode">Postalcode <em>*</em></h:outputLabel>
+					<h:inputText id="postalcode" require="true"/>
+					</blockquote>
+
+					<blockquote style="clear:both;">
+						<h:outputLabel for="phone">Telephone number </h:outputLabel>
+						<h:inputText id="phone" require="true"/>
+					</blockquote>
+
+
+					<h2 class="header">Additional Information</h2>
+					<p class="description">If you want to be able to create a project and recieve funding you need to give us some more information.</p>
+					
+					<blockquote style="clear:both;">
+						<h:outputLabel for="income">Yearly Income </h:outputLabel>
+						<h:inputText id="income" require="true"/>
+					</blockquote>
+					
+					<blockquote style="clear:both;">
+						<h:outputLabel for="expenses">Yearly expenses </h:outputLabel>
+						<h:inputText id="expenses" require="true"/>
+					</blockquote>
+					
+					<blockquote style="clear:both;">
+						<h:outputLabel for="existingcredits">Existing credits</h:outputLabel>
+						<h:inputText id="existingcredits" require="true"/>
+					</blockquote>
+
+					<blockquote style="clear:both;">
+						<h:commandButton type="submit" value="Submit registration">
+							<f:ajax execute="@form" render="@form" />
+						</h:commandButton>
+					</blockquote>
+				</h:form>
+				
+    			
+    		</ui:define>
+ 
+    	</ui:composition>
+ 
+    </h:body>
+ 
+</html>

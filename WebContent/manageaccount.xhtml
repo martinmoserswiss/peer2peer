@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"   
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      >
+    <h:body>
+ 
+    	<ui:composition template="/templates/masterLayout.xhtml">
+ 			
+ 			
+ 			
+    		<ui:define name="content">
+					
+					<h1 class="header"><span class="highlight">Manage account</span></h1>
+
+					<h2 class="header">Change password</h2>
+
+					<h:form class="basicForm" method="post" action="">
+
+						<blockquote style="clear:both;">
+							<h:outputLabel for="">Old password</h:outputLabel>
+							<h:inputSecret id="old_password" require="true"/>
+						</blockquote>
+
+						<blockquote style="clear:both;">
+							<h:outputLabel for="">New password</h:outputLabel>
+							<h:inputSecret id="new_password" require="true"/>
+						</blockquote>
+
+						<blockquote style="clear:both;">
+							<h:outputLabel for="">Reenter new password</h:outputLabel>
+							<h:inputSecret id="c_new_password" require="true"/>
+						</blockquote>
+
+						<blockquote style="clear:both;">
+							<h:commandButton type="submit" value="Change password">
+								<f:ajax execute="@form" render="@form" />
+							</h:commandButton>
+						</blockquote>
+
+					</h:form>
+
+					<h:form class="basicForm" method="post" action="">
+						<h2 class="header">Change contact information</h2>
+
+						<blockquote style="clear:both;">
+							<h:outputLabel for="">EMail</h:outputLabel>
+							<h:inputText id="email" require="true"/>
+						</blockquote>
+
+						<blockquote style="clear:both;">
+							<h:outputLabel for="">First Name</h:outputLabel>
+							<h:inputText id="firstname" require="true"/>
+						</blockquote>
+
+						<blockquote style="clear:both;">
+							<h:outputLabel for="">Last Name</h:outputLabel>
+							<h:inputText id="lastname" require="true"/>
+						</blockquote>
+
+						<blockquote style="clear:both;">
+							<h:outputLabel for="">Birthdate</h:outputLabel>
+							<h:inputText id="birthdate1" require="true"/>
+							<h:inputText id="birthdate2" require="true"/>
+							<h:inputText id="birthdate3" require="true"/>
+						</blockquote>
+
+						<blockquote style="clear:both;">
+							<h:outputLabel for="">Country</h:outputLabel>
+							<select id="question1" name="country" tabindex="10" class="text">
+
+								<option value="CHE">Schweiz</option>
+								<option value="DEU">Deutschland (Bundesrep.)</option>
+
+							</select>
+						</blockquote>
+
+						<blockquote style="clear:both;">
+							<h:outputLabel for="">City </h:outputLabel>
+							<h:inputText id="city" require="true"/>
+						</blockquote>
+
+						<blockquote style="clear:both;">
+							<h:outputLabel for="">Street</h:outputLabel>
+							<h:inputText id="address" require="true"/>
+						</blockquote>
+
+						<blockquote style="clear:both;">
+							<h:outputLabel for="">Postalcode</h:outputLabel>
+							<h:inputText id="postalcode" require="true"/>
+						</blockquote>
+
+						<blockquote style="clear:both;">
+							<h:outputLabel for="">Telephone number</h:outputLabel>
+							<h:inputText id="phone" require="true"/>
+						</blockquote>
+
+						<h2 class="header">Additional Information</h2>
+
+						<blockquote style="clear:both;">
+							<h:outputLabel for="">Yearly Income </h:outputLabel>
+							<h:inputText id="income" require="true"/>
+						</blockquote>
+						
+						<blockquote style="clear:both;">
+							<h:outputLabel for="">Yearly expenses </h:outputLabel>
+							<h:inputText id="expenses" require="true"/>
+						</blockquote>
+						
+						<blockquote style="clear:both;">
+							<h:outputLabel for="">Existing credits</h:outputLabel>
+							<h:inputText id="existingcredits" require="true"/>
+						</blockquote>
+
+						<blockquote style="clear:both;">
+							<h:commandButton type="submit" value="Update">
+								<f:ajax execute="@form" render="@form" />
+							</h:commandButton>
+						</blockquote>
+					
+					</h:form>
+	
+    		</ui:define>
+ 
+    	</ui:composition>
+ 
+    </h:body>
+ 
+</html>

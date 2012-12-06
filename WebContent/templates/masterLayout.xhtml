@@ -1,0 +1,63 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"   
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      >
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title><ui:insert name="title">PEER2PEER CREDIT</ui:insert></title>
+	
+	<h:outputScript library="js" name="jquery-1.8.3.min.js" />
+	<h:outputScript library="js" name="alert.js" />
+	<h:outputScript library="js" name="jquery.validate.js" />
+	<h:outputScript library="js" name="expand.js" />
+	
+	<h:outputStylesheet name="css/master.css" />
+</h:head>
+<h:body>
+<div class="outer-wrapper">
+	<div class="inner-wrapper">
+		<div class="head-wrapper">
+			<div class="logo"></div>
+			<div class="top-nav">
+				<h:form>
+					<h:outputLink value="#{request.contextPath}/logout.xhtml">logout</h:outputLink><em>|</em> 
+					<h:outputLink  value="#{request.contextPath}/manageaccount.xhtml">Account</h:outputLink> <em>|</em> <span>Welcome <b>Martin</b></span><!-- -->
+				</h:form>
+			</div>
+
+			<div class="main-menu-wrapper">
+				<div class="main-menu">
+					<ul>
+						<h:form>
+						<li><h:outputLink value="#{request.contextPath}/home.xhtml">Home</h:outputLink></li>
+						<li><h:outputLink value="#{request.contextPath}/createproject.xhtml">Create a Project</h:outputLink></li>
+						<li><h:outputLink value="#{request.contextPath}/fundproject.xhtml">Fund a Project</h:outputLink></li>
+						<li><h:outputLink value="#{request.contextPath}/myprojects.xhtml">My Projects</h:outputLink></li>
+						<li><h:outputLink value="#{request.contextPath}/mycredits.xhtml">My Credits</h:outputLink></li>
+						</h:form>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="content-wrapper">
+			
+			<div class="content-container">
+
+				<div class="alert"></div>
+			
+				<ui:insert name="content"/>
+				
+				<div class="clear" />
+				
+			</div>
+		</div>
+
+		<div class="footer-wrapper">
+			<div class="footer">TODO footer include</div>
+		</div>
+	</div>
+</div>
+</h:body>
+</html>

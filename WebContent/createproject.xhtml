@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"   
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      >
+    <h:body>
+ 
+    	<ui:composition template="/templates/masterLayout.xhtml">
+ 			
+ 			
+ 			
+    		<ui:define name="content">
+					
+					<h1 class="header">Create a Project</h1>
+					<h2 class="header">Create a new Project for Credit</h2>
+					<p class="description">Create a new project that you would like to recieve funding for.</p>
+					<h:form id="form" class="basicForm">
+						<blockquote style="clear:both;">
+							<h:outputLabel for="">Project Name</h:outputLabel>
+							<h:inputText id="projectName" require="true"/>
+						</blockquote>
+						<blockquote style="clear:both;">
+							<h:outputLabel for="">Credit Amount</h:outputLabel>
+							<h:inputText id="creditAmount" require="true"/>
+						</blockquote>
+						<blockquote style="clear:both;">
+							<h:outputLabel for="">Duration in Months</h:outputLabel>
+							<h:inputText id="duration" require="true"/>
+						</blockquote>
+						<blockquote style="clear:both;">
+							<h:outputLabel for="">Yearly Income</h:outputLabel>
+							<h:inputText id="income" require="true"/>
+						</blockquote>
+						<blockquote style="clear:both;">
+							<h:outputLabel for="">Yearly Expenses</h:outputLabel>
+							<h:inputText id="expenses" require="true"/>
+						</blockquote>
+						<blockquote style="clear:both;">
+							<h:commandButton type="submit" value="Create">
+								<f:ajax execute="@form" render="@form" />
+							</h:commandButton>
+						</blockquote>
+					</h:form>	
+    		</ui:define>
+ 
+    	</ui:composition>
+ 
+    </h:body>
+ 
+</html>

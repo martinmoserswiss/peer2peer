@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"   
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      >
+    <h:body>
+ 
+    	<ui:composition template="/templates/masterLayout.xhtml">
+ 			
+ 			
+ 			
+    		<ui:define name="content">
+    			<!-- working inline javascript -->
+	    		<script>
+	 				$(function(){
+	 					alertHandler.display("success", "test alert.", 500);
+	 				});
+	 			</script>
+	 			
+				
+    			<h1 class="header">Create a Project</h1>
+				<h2 class="header">Create a new Project for Credit</h2>
+				<p class="description">Create a new project that you would like to receive funding for.</p>
+				
+				<h:form id="form" class="basicForm">
+					<blockquote style="clear:both;">
+						<h:outputLabel for="projectName">Project Name</h:outputLabel>
+				        <h:inputText id="projectName" required="true" requiredMessage="testasd">
+				        	<f:ajax event="blur" render="projectNameRequiredMessage"/>
+				        </h:inputText>
+				        
+				        <h:message id="projectNameRequiredMessage" for="projectName" class="error" />
+						
+					</blockquote>
+					
+					<blockquote style="clear:both;">
+						<h:outputLabel for="creditAmount">Credit Amount</h:outputLabel>
+				        <h:inputText id="creditAmount" required="true" />
+					</blockquote>
+					
+					<blockquote style="clear:both;">
+						<h:outputLabel for="income">Yearly Income</h:outputLabel>
+				        <h:inputText id="income" required="true" />
+					</blockquote>
+					
+					<blockquote style="clear:both;">
+						<h:outputLabel for="expenses">Yearly Expenses</h:outputLabel>
+				        <h:inputText id="expenses" required="true" />
+					</blockquote>
+					
+					<blockquote style="clear:both;">
+						<h:commandButton type="submit" value="Create">
+							<f:ajax execute="@form" render="@form" />
+						</h:commandButton>
+					</blockquote>
+					
+					<h:messages for="form"/>
+				</h:form>
+				
+    			
+    		</ui:define>
+ 
+    	</ui:composition>
+ 
+    </h:body>
+ 
+</html>

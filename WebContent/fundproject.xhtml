@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"   
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      >
+    <h:body>
+ 
+    	<ui:composition template="/templates/masterLayout.xhtml">
+ 			
+    		<ui:define name="content">
+				
+				
+					<h1 class="header">Fund a Project</h1>
+					<h2 class="header">Find a Project to fund</h2>
+					<p class="description">Enter the desired amount you want to give to a project.</p>
+					<h:form id="form" class="basicForm singleLineForm">
+
+						<h:outputLabel for="">
+							Total amount of funds 
+							<h:inputText id="totalFunds" require="true"/>
+						</h:outputLabel>
+						
+						
+						<h:outputLabel for="">
+							Maximum fund per project
+							<h:inputText id="maxPerProject" require="true"/>
+						</h:outputLabel>
+						
+
+						<h:commandButton type="submit" value="Search">
+							<f:ajax execute="@form" render="@form" />
+						</h:commandButton>
+
+					</h:form>
+					<div class="clear" />
+					
+					
+					<table class="highlight">
+						<tr class="odd">
+							<th>ID</th>
+							<th>Project Name</th>
+							<th>Amount</th>
+							<th>Duration</th>
+							<th>Mark</th>
+							<th>Fund this project</th>
+						</tr>
+						<tr class="even">
+							<td>1</td>
+							<td>Some stuff I wanna do</td>
+							<td>300'000 $</td>
+							<td>2 years</td>
+							<td><span class="markTop">10</span></td>
+							<td>
+								<h:form class="basicForm singleLineForm">
+									<h:outputLabel><h:inputText require="true"/></h:outputLabel>
+									<a href="#">send</a>
+								</h:form>
+							</td>
+						</tr>
+						<tr class="odd">
+							<td>1</td>
+							<td>I dunno, I need money I guess</td>
+							<td>40'000 $</td>
+							<td>5 years</td>
+							<td><span class="markLow">3</span></td>
+							<td>
+								<h:form class="basicForm singleLineForm">
+									<h:outputLabel><h:inputText require="true"/></h:outputLabel>
+									<a href="#">send</a>
+								</h:form>
+							</td>
+						</tr>
+					
+						<tr class="even">
+							<td>1</td>
+							<td>Sample name</td>
+							<td>400'000 $</td>
+							<td>1 year</td>
+							<td><span class="markMedium">5</span></td>
+							<td>
+								<h:form class="basicForm singleLineForm">
+									<h:outputLabel><h:inputText require="true"/></h:outputLabel>
+									<a href="#">send</a>
+								</h:form>
+							</td>
+						</tr>
+						
+					</table>
+	
+    		</ui:define>
+ 
+    	</ui:composition>
+ 
+    </h:body>
+ 
+</html>

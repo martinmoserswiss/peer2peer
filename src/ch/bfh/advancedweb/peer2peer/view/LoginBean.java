@@ -17,6 +17,7 @@ public class LoginBean implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	
 	@ManagedProperty(value="#{LoginBean}")
 	private UserController userController;
 	private String email;

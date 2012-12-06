@@ -18,7 +18,9 @@ import ch.bfh.advancedweb.peer2peer.model.User;
 @SessionScoped
 public class UserController implements Serializable {
 	
-	@ManagedProperty(value="#{user}")
+	@ManagedProperty(value="#{entityManager}")
+	EntityManager em;
+	
 	boolean isLoggedIn = false;
 
 	public UserController(){
@@ -27,7 +29,7 @@ public class UserController implements Serializable {
 	
 	public boolean isValid(String email, String password){
 		
-		EntityManager em = Persistence.createEntityManagerFactory(
+		em = Persistence.createEntityManagerFactory(
 				"ch.bfh.advancedweb.peer2peer.model").createEntityManager();
 		
 		Query q = em.createQuery("select u from User AS u where u.email = :email AND u.password = :password");

@@ -20,15 +20,14 @@ public class Loan implements Serializable {
 	@Id
 	@GeneratedValue(strategy = IDENTITY)
 	private long id;
-	private double interest_rate;
-	private boolean status;
+	private double interest_rate; // Zinssatz
+	@Enumerated(EnumType.STRING)
+    private LoanStatus status;
 	private static final long serialVersionUID = 1L;
 	
-	@OneToMany(cascade = ALL, mappedBy = "loan")
-	private List<Project> projects;
+	private Project project;
 	
-	@OneToMany(cascade = ALL, mappedBy = "loan")
-	private List<User> users;
+	private User user;
 
 	public Loan() {
 		super();
@@ -47,24 +46,25 @@ public class Loan implements Serializable {
 	public void setInterest_rate(double interest_rate) {
 		this.interest_rate = interest_rate;
 	}   
-	public boolean getStatus() {
-		return this.status;
+	public Project getProject() {
+		return project;
 	}
-
-	public void setStatus(boolean status) {
+	public void setProject(Project project) {
+		this.project = project;
+	}
+	public User getUser() {
+		return user;
+	}
+	public void setUser(User user) {
+		this.user = user;
+	}
+	public LoanStatus getStatus() {
+		return status;
+	}
+	public void setStatus(LoanStatus status) {
 		this.status = status;
 	}
-	public List<Project> getProjects() {
-		return projects;
-	}
-	public void setProjects(List<Project> projects) {
-		this.projects = projects;
-	}
-	public List<User> getUsers() {
-		return users;
-	}
-	public void setUsers(List<User> users) {
-		this.users = users;
-	}
+
+	
    
 }

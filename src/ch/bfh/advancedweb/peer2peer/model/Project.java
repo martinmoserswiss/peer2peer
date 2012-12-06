@@ -20,14 +20,18 @@ import static javax.persistence.CascadeType.ALL;
 @Entity
 public class Project implements Serializable {
 
-	   
+	  
 	@Id
 	@GeneratedValue(strategy = IDENTITY)
 	private Long id;
-	private double amount;
-	private int duration;
-	private boolean status;
-	private String mark;
+	private String projectName;
+	private double amount; // Betrag in Franken
+	private int duration; // Dauer in
+	
+	@Enumerated(EnumType.STRING)
+    private ProjectStatus status;
+	
+	private int mark;
 	@Temporal(DATE)
 	private Date startdate;
 	@Temporal(DATE)
@@ -36,14 +40,22 @@ public class Project implements Serializable {
 	private Date creationdate;
 	private static final long serialVersionUID = 1L;
 	
-	private Loan loan;
+	@OneToMany(cascade = CascadeType.PERSIST, mappedBy = "project")
+	private List<Loan> loans;
 	
-	@OneToMany(cascade = ALL, mappedBy = "project")
-	private List<User> users;
+	private User user;
 
 	public Project() {
 		super();
-	}   
+	}
+	
+	public String getProjectName() {
+		return projectName;
+	}
+	public void setProjectName(String projectName) {
+		this.projectName = projectName;
+	}
+	
 	public Long getId() {
 		return this.id;
 	}
@@ -65,20 +77,6 @@ public class Project implements Serializable {
 	public void setDuration(int duration) {
 		this.duration = duration;
 	}   
-	public boolean getStatus() {
-		return this.status;
-	}
-
-	public void setStatus(boolean status) {
-		this.status = status;
-	}   
-	public String getMark() {
-		return this.mark;
-	}
-
-	public void setMark(String mark) {
-		this.mark = mark;
-	}
 	
 	public Date getStartdate() {
 		return startdate;
@@ -103,18 +101,29 @@ public class Project implements Serializable {
 	public void setCreationdate(Date creationdate) {
 		this.creationdate = creationdate;
 	}
-	
-	public Loan getLoan() {
-		return loan;
+	public List<Loan> getLoans() {
+		return loans;
 	}
-	public void setLoan(Loan loan) {
-		this.loan = loan;
+	public void setLoans(List<Loan> loans) {
+		this.loans = loans;
 	}
-	public List<User> getUsers() {
-		return users;
+	public User getUser() {
+		return user;
 	}
-	public void setUsers(List<User> users) {
-		this.users = users;
+	public void setUser(User user) {
+		this.user = user;
+	}
+	public ProjectStatus getStatus() {
+		return status;
+	}
+	public void setStatus(ProjectStatus status) {
+		this.status = status;
+	}
+	public int getMark() {
+		return mark;
+	}
+	public void setMark(int mark) {
+		this.mark = mark;
 	}
    
 }

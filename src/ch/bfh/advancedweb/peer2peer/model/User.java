@@ -4,9 +4,12 @@ import java.io.Serializable;
 import java.lang.String;
 
 import javax.persistence.*;
+
 import java.util.Date;
+import java.util.List;
 
 import static javax.persistence.TemporalType.DATE;
+import static javax.persistence.CascadeType.ALL;
 import static javax.persistence.GenerationType.IDENTITY;
 
 /**
@@ -38,8 +41,11 @@ public class User implements Serializable {
 	@Temporal(DATE)
 	private Date registration_date;
 	
-	private Project project;
-	private Loan loan;
+	@OneToMany(cascade = ALL, mappedBy = "user")
+	private List<Project> projects;
+	
+	@OneToMany(cascade = ALL, mappedBy = "user")
+	private List<Loan> loans;
 	
 	private static final long serialVersionUID = 1L;
 
@@ -164,18 +170,19 @@ public class User implements Serializable {
 	public void setRegistration_date(Date registration_date) {
 		this.registration_date = registration_date;
 	}
+	public List<Project> getProjects() {
+		return projects;
+	}
+	public void setProjects(List<Project> projects) {
+		this.projects = projects;
+	}
+	public List<Loan> getLoans() {
+		return loans;
+	}
+	public void setLoans(List<Loan> loans) {
+		this.loans = loans;
+	}
 	
-	public Project getProject() {
-		return project;
-	}
-	public void setProject(Project project) {
-		this.project = project;
-	}
-	public Loan getLoan() {
-		return loan;
-	}
-	public void setLoan(Loan loan) {
-		this.loan = loan;
-	}
+
    
 }

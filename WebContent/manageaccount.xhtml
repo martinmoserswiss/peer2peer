@@ -14,9 +14,9 @@
  			
     		<ui:define name="content">
 					
-					<h1 class="header"><span class="highlight">Manage account</span></h1>
+					<h1 class="header"><span class="highlight">#{msg['page.account.title']}</span></h1>
 
-					<h2 class="header">Change password</h2>
+					<h2 class="header">#{msg['page.account.passwordTitle']}</h2>
 
 					<h:form class="basicForm" method="post" action="">
 
@@ -44,7 +44,7 @@
 					</h:form>
 
 					<h:form class="basicForm" method="post" action="">
-						<h2 class="header">Change contact information</h2>
+						<h2 class="header">#{msg['page.account.contactInformationTitle']}</h2>
 
 						<blockquote style="clear:both;">
 							<h:outputLabel for="">EMail</h:outputLabel>
@@ -98,7 +98,7 @@
 							<h:inputText id="phone" require="true"/>
 						</blockquote>
 
-						<h2 class="header">Additional Information</h2>
+						<h2 class="header">#{msg['page.account.additionalInformationTitle']}</h2>
 
 						<blockquote style="clear:both;">
 							<h:outputLabel for="">Yearly Income </h:outputLabel>

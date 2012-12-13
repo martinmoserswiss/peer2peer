@@ -13,24 +13,24 @@
     		<ui:define name="content">
 				
 				
-					<h1 class="header">Fund a Project</h1>
-					<h2 class="header">Find a Project to fund</h2>
-					<p class="description">Enter the desired amount you want to give to a project.</p>
+					<h1 class="header">#{msg['page.fundProject.title']}</h1>
+					<h2 class="header">#{msg['page.fundProject.subtitle']}</h2>
+					<p class="description">#{msg['page.fundProject.description']}</p>
 					<h:form id="form" class="basicForm singleLineForm">
 
 						<h:outputLabel for="">
-							Total amount of funds 
+							 #{msg['form.totalFunds']}
 							<h:inputText id="totalFunds" require="true"/>
 						</h:outputLabel>
 						
 						
 						<h:outputLabel for="">
-							Maximum fund per project
+							#{msg['form.maxPerProject']}
 							<h:inputText id="maxPerProject" require="true"/>
 						</h:outputLabel>
 						
 
-						<h:commandButton type="submit" value="Search">
+						<h:commandButton type="submit" value="#{msg['form.search']}">
 							<f:ajax execute="@form" render="@form" />
 						</h:commandButton>
 
@@ -40,12 +40,12 @@
 					
 					<table class="highlight">
 						<tr class="odd">
-							<th>ID</th>
-							<th>Project Name</th>
-							<th>Amount</th>
-							<th>Duration</th>
-							<th>Mark</th>
-							<th>Fund this project</th>
+							<th>#{msg['project.id']}</th>
+							<th>#{msg['project.name']}</th>
+							<th>#{msg['project.amount']}</th>
+							<th>#{msg['project.duration']}</th>
+							<th>#{msg['project.mark']}</th>
+							<th>#{msg['project.fundThis']}</th>
 						</tr>
 						<tr class="even">
 							<td>1</td>
@@ -55,8 +55,8 @@
 							<td><span class="markTop">10</span></td>
 							<td>
 								<h:form class="basicForm singleLineForm">
-									<h:outputLabel><h:inputText require="true"/></h:outputLabel>
-									<a href="#">send</a>
+									<h:outputLabel><h:inputText required="true" style="width:20px"/></h:outputLabel>
+									<a href="#">#{msg['link.send']}</a>
 								</h:form>
 							</td>
 						</tr>
@@ -68,8 +68,8 @@
 							<td><span class="markLow">3</span></td>
 							<td>
 								<h:form class="basicForm singleLineForm">
-									<h:outputLabel><h:inputText require="true"/></h:outputLabel>
-									<a href="#">send</a>
+									<h:outputLabel><h:inputText required="true" style="width:20px"/></h:outputLabel>
+									<a href="#">#{msg['link.send']}</a>
 								</h:form>
 							</td>
 						</tr>
@@ -82,8 +82,8 @@
 							<td><span class="markMedium">5</span></td>
 							<td>
 								<h:form class="basicForm singleLineForm">
-									<h:outputLabel><h:inputText require="true"/></h:outputLabel>
-									<a href="#">send</a>
+									<h:outputLabel><h:inputText required="true" style="width:20px"/></h:outputLabel>
+									<a href="#">#{msg['link.send']}</a>
 								</h:form>
 							</td>
 						</tr>

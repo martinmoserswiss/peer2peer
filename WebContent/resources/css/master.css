@@ -108,9 +108,19 @@ div.clear {
 .top-nav {
 	position: relative;
 	float: right;
+	height: 45px;
 	width: 274px;
 	font-size: 11px;
-	padding: 13px 0 3px 0;
+	padding: 0px 0 3px 0;
+}
+
+
+div.language {
+	text-align: right;
+}
+
+div.userlinks {
+	margin: 34px 0 0 0;
 }
 
 .top-nav a,.top-nav em {
@@ -141,6 +151,7 @@ div.clear {
 .logo {
 	background: url("../../resources/images/logo.png") no-repeat;
 	width: 374px;
+	top:20px;
 	height: 30px;
 	position: absolute;
 }
@@ -157,8 +168,8 @@ div.clear {
 .head-wrapper {
 	position: relative;
 	margin: 0 auto;
-	padding: 22px 0 0 0;
-	height: 65px;
+	padding: 0;
+	height: 80px;
 	width: 800px;
 }
 

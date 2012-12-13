@@ -14,29 +14,29 @@
  			
     		<ui:define name="content">
 
-					<h1 class="header"><span class="highlight">My Projects</span></h1>
-					<h2 class="header">Manage your projects</h2>
-					<p class="description">Below is a list of all your current projects, you can filter the list by selecting the checkboxes.</p>
+					<h1 class="header"><span class="highlight">#{msg['page.myProjects.title']}</span></h1>
+					<h2 class="header">#{msg['page.myProjects.subtitle']}</h2>
+					<p class="description">#{msg['page.myProjects.description']}</p>
 					
 					<h:form id="form" class="basicForm singleLineForm">
 						<div class="formGroup">
-							<h3 class="title">Display status</h3>
-							<h:outputLabel><input type="checkbox" name="statusPending" checked="checked" /> Pending</h:outputLabel>
-							<h:outputLabel><input type="checkbox" name="statusActive" checked="checked" /> Active</h:outputLabel>
-							<h:outputLabel><input type="checkbox" name="statusFinished" checked="checked" /> Finished</h:outputLabel>
+							<h3 class="title">#{msg['page.myProjects.displayStatusTitle']}</h3>
+							<h:outputLabel><input type="checkbox" name="statusPending" checked="checked" /> #{msg['form.pending']}</h:outputLabel>
+							<h:outputLabel><input type="checkbox" name="statusActive" checked="checked" /> #{msg['form.active']}</h:outputLabel>
+							<h:outputLabel><input type="checkbox" name="statusFinished" checked="checked" /> #{msg['form.finished']}</h:outputLabel>
 						</div>
 					</h:form>
 					
 					<table class="highlight">
 						<tr class="odd">
-							<th>ID</th>
-							<th>Project Name</th>
-							<th>Amount</th>
-							<th>Duration</th>
-							<th>start Date</th>
-							<th>Mark</th>
-							<th>Status</th>
-							<th>Actions</th>
+							<th>#{msg['project.id']}</th>
+							<th>#{msg['project.name']}</th>
+							<th>#{msg['project.amount']}</th>
+							<th>#{msg['project.duration']}</th>
+							<th>#{msg['project.startDate']}</th>
+							<th>#{msg['project.mark']}</th>
+							<th>#{msg['project.status']}</th>
+							<th>#{msg['project.actions']}</th>
 						</tr>
 						
 						<tr class="even">
@@ -47,7 +47,7 @@
 							<td>---</td>
 							<td><span class="markTop">10</span></td>
 							<td>pending</td>
-							<td><a class="expand" href="#">details</a></td>
+							<td><a class="expand" href="#">#{msg['link.details']}</a></td>
 						</tr>
 						<tr class="expand-content">
 							<td colspan="8">
@@ -66,7 +66,7 @@
 							<td>23.11.2012</td>
 							<td><span class="markLow">3</span></td>
 							<td>active</td>
-							<td><a class="expand" href="#">details</a></td>
+							<td><a class="expand" href="#">#{msg['link.details']}</a></td>
 						</tr>
 						<tr class="expand-content">
 							<td colspan="8">
@@ -110,7 +110,7 @@
 							<td>---</td>
 							<td><span class="markTop">10</span></td>
 							<td>pending</td>
-							<td><a class="expand" href="#">details</a></td>
+							<td><a class="expand" href="#">#{msg['link.details']}</a></td>
 						</tr>
 						<tr class="expand-content">
 							<td colspan="8">
@@ -147,7 +147,7 @@
 							<td>23.02.2011</td>
 							<td><span class="markMedium">5</span></td>
 							<td>finished</td>
-							<td><a class="expand" href="#">details</a></td>
+							<td><a class="expand" href="#">#{msg['link.details']}</a></td>
 						</tr>
 						<tr class="expand-content">
 							<td colspan="8">

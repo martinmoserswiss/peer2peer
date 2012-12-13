@@ -14,36 +14,36 @@
  			
     		<ui:define name="content">
 					
-					<h1 class="header"><span class="highlight">My Credits</span></h1>
-					<h2 class="header">Manage your loans</h2>
-					<p class="description">Below is a list of all your loan proposals.</p>
+					<h1 class="header"><span class="highlight">#{msg['page.myCredits.title']}</span></h1>
+					<h2 class="header">#{msg['page.myCredits.subtitle']}</h2>
+					<p class="description">#{msg['page.myCredits.description']}</p>
 					
 					<h:form id="form" class="basicForm singleLineForm">
 						<div class="formGroup">
-							<h3 class="title">project status</h3>
-							<h:outputLabel><input type="checkbox" name="statusPending" checked="checked" /> Active</h:outputLabel>
-							<h:outputLabel><input type="checkbox" name="statusActive" checked="checked" /> Finished</h:outputLabel>
-							<h:outputLabel><input type="checkbox" name="statusFinished" checked="checked" /> Pending</h:outputLabel>
+							<h3 class="title">#{msg['page.myCredits.projectStatusTitle']}</h3>
+							<h:outputLabel><input type="checkbox" name="statusPending" checked="checked" /> #{msg['form.active']}</h:outputLabel>
+							<h:outputLabel><input type="checkbox" name="statusActive" checked="checked" /> #{msg['form.finished']}</h:outputLabel>
+							<h:outputLabel><input type="checkbox" name="statusFinished" checked="checked" /> #{msg['form.pending']}</h:outputLabel>
 						</div>
 						<div class="formGroup">
-							<h3 class="title">funding status</h3>
-							<h:outputLabel><input type="checkbox" name="statusPending" checked="checked" /> Accepted</h:outputLabel>
-							<h:outputLabel><input type="checkbox" name="statusActive" checked="checked" /> Declined</h:outputLabel>
-							<h:outputLabel><input type="checkbox" name="statusFinished" checked="checked" /> Pending</h:outputLabel>
+							<h3 class="title">#{msg['page.myCredits.fundingStatusTitle']}</h3>
+							<h:outputLabel><input type="checkbox" name="statusPending" checked="checked" /> #{msg['form.accepted']}</h:outputLabel>
+							<h:outputLabel><input type="checkbox" name="statusActive" checked="checked" /> #{msg['form.declined']}</h:outputLabel>
+							<h:outputLabel><input type="checkbox" name="statusFinished" checked="checked" /> #{msg['form.pending']}</h:outputLabel>
 						</div>
 					</h:form>
 					
 					<table class="highlight">
 						<tr class="odd">
-							<th>ID</th>
-							<th>Project Name</th>
-							<th>Amount</th>
-							<th>Interest rate</th>
-							<th>Duration</th>
-							<th>Mark</th>
-							<th>Project Status</th>
-							<th>Funding Status</th>
-							<th>Actions</th>
+							<th>#{msg['project.id']}</th>
+							<th>#{msg['project.name']}</th>
+							<th>#{msg['project.amount']}</th>
+							<th>#{msg['project.interestRate']}</th>
+							<th>#{msg['project.duration']}</th>
+							<th>#{msg['project.mark']}</th>
+							<th>#{msg['form.projectStatus']}</th>
+							<th>#{msg['form.fundingStatus']}</th>
+							<th>#{msg['project.actions']}</th>
 						</tr>
 						<tr class="even">
 							<td>1</td>

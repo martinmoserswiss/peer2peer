@@ -14,33 +14,49 @@
  			
     		<ui:define name="content">
 					
-					<h1 class="header">Create a Project</h1>
-					<h2 class="header">Create a new Project for Credit</h2>
-					<p class="description">Create a new project that you would like to recieve funding for.</p>
+					<h1 class="header">#{msg['page.createProject.title']}</h1>
+					<h2 class="header">#{msg['page.createProject.subtitle']}</h2>
+					<p class="description">#{msg['page.createProject.description']}</p>
 					<h:form id="form" class="basicForm">
 						<blockquote style="clear:both;">
-							<h:outputLabel for="">Project Name</h:outputLabel>
-							<h:inputText id="projectName" require="true"/>
+							<h:outputLabel for="">#{msg['form.projectName']}</h:outputLabel>
+							<h:inputText id="projectName" required="true" styleClass="#{component.valid ? '' : 'error'}">
+				        		<f:ajax event="blur" render="projectNameRequiredMessage projectName"/>
+					        </h:inputText>
+					        <h:message id="projectNameRequiredMessage" for="projectName" class="error" />
+							
 						</blockquote>
 						<blockquote style="clear:both;">
-							<h:outputLabel for="">Credit Amount</h:outputLabel>
-							<h:inputText id="creditAmount" require="true"/>
+							<h:outputLabel for="">#{msg['form.creditAmount']}</h:outputLabel>
+							<h:inputText id="creditAmount" required="true" styleClass="#{component.valid ? '' : 'error'}">
+				        		<f:ajax event="blur" render="creditAmountRequiredMessage creditAmount"/>
+					        </h:inputText>
+					        <h:message id="creditAmountRequiredMessage" for="creditAmount" class="error" />
 						</blockquote>
 						<blockquote style="clear:both;">
-							<h:outputLabel for="">Duration in Months</h:outputLabel>
-							<h:inputText id="duration" require="true"/>
+							<h:outputLabel for="">#{msg['form.projectDuration']}</h:outputLabel>
+							<h:inputText id="duration" required="true" styleClass="#{component.valid ? '' : 'error'}">
+				        		<f:ajax event="blur" render="durationRequiredMessage duration" />
+					        </h:inputText>
+					        <h:message id="durationRequiredMessage" for="duration" class="error" />
 						</blockquote>
 						<blockquote style="clear:both;">
-							<h:outputLabel for="">Yearly Income</h:outputLabel>
-							<h:inputText id="income" require="true"/>
+							<h:outputLabel for="">#{msg['form.income']}</h:outputLabel>
+							<h:inputText id="income" required="true" styleClass="#{component.valid ? '' : 'error'}">
+				        		<f:ajax event="blur" render="incomeRequiredMessage income"/>
+					        </h:inputText>
+					        <h:message id="incomeRequiredMessage" for="income" class="error" />
 						</blockquote>
 						<blockquote style="clear:both;">
-							<h:outputLabel for="">Yearly Expenses</h:outputLabel>
-							<h:inputText id="expenses" require="true"/>
+							<h:outputLabel for="">#{msg['form.expenses']}</h:outputLabel>
+							<h:inputText id="expenses" required="true" styleClass="#{component.valid ? '' : 'error'}">
+				        		<f:ajax event="blur" render="expensesRequiredMessage expenses"/>
+					        </h:inputText>
+					        <h:message id="expensesRequiredMessage" for="expenses" class="error" />
 						</blockquote>
 						<blockquote style="clear:both;">
-							<h:commandButton type="submit" value="Create">
-								<f:ajax execute="@form" render="@form" />
+							<h:commandButton type="submit" value="#{msg['form.createProjectSubmit']}">
+								<f:ajax execute="@form" render="@form" actionListener="#{createProjectBean.formSubmitListener}"/>
 							</h:commandButton>
 						</blockquote>
 					</h:form>	

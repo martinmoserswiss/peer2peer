@@ -1,9 +1,12 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"   
+	  xmlns:f="http://java.sun.com/jsf/core"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:ui="http://java.sun.com/jsf/facelets"
       >
+      
+<f:view>
 <h:head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<title><ui:insert name="title">PEER2PEER CREDIT</ui:insert></title>
@@ -20,23 +23,49 @@
 	<div class="inner-wrapper">
 		<div class="head-wrapper">
 			<div class="logo"></div>
+			
 			<div class="top-nav">
-				<h:form>
-					<h:outputLink value="#{request.contextPath}/logout.xhtml">logout</h:outputLink><em>|</em> 
-					<h:outputLink  value="#{request.contextPath}/manageaccount.xhtml">Account</h:outputLink> <em>|</em> <span>Welcome <b>Martin</b></span><!-- -->
-				</h:form>
-			</div>
+				<div class="language">
+	
+					<h:form>
+						<h:commandLink id="fr" value="#{msg.french_short}">
+							<f:actionListener
+								type="ch.bfh.advancedweb.peer2peer.common.LanguageChangedActionEvent" />
+						</h:commandLink>
+						<h:commandLink id="de" value="#{msg.german_short}">
+							<f:actionListener
+								type="ch.bfh.advancedweb.peer2peer.common.LanguageChangedActionEvent" />
+						</h:commandLink>
+						<h:commandLink id="en" value="#{msg.english_short}">
+							<f:actionListener
+								type="ch.bfh.advancedweb.peer2peer.common.LanguageChangedActionEvent" />
+						</h:commandLink>
 
+					</h:form>
+	
+				</div>
+				<div class="userlinks">
+					<ui:fragment rendered="false">
+					    <h:outputLink value="#{request.contextPath}/logout.xhtml">logout</h:outputLink><em>|</em> 
+						<h:outputLink  value="#{request.contextPath}/manageaccount.xhtml">Account</h:outputLink> <em>|</em> <span>Welcome <b>Martin</b></span><!-- -->
+					</ui:fragment>
+					<ui:fragment rendered="true">
+					    <h:outputLink value="#{request.contextPath}/login.xhtml">login</h:outputLink><em>|</em> 
+						<h:outputLink  value="#{request.contextPath}/register.xhtml">register</h:outputLink>
+					</ui:fragment>
+				</div>
+			</div>
+			
 			<div class="main-menu-wrapper">
 				<div class="main-menu">
 					<ul>
-						<h:form>
-						<li><h:outputLink value="#{request.contextPath}/home.xhtml">Home</h:outputLink></li>
-						<li><h:outputLink value="#{request.contextPath}/createproject.xhtml">Create a Project</h:outputLink></li>
-						<li><h:outputLink value="#{request.contextPath}/fundproject.xhtml">Fund a Project</h:outputLink></li>
-						<li><h:outputLink value="#{request.contextPath}/myprojects.xhtml">My Projects</h:outputLink></li>
-						<li><h:outputLink value="#{request.contextPath}/mycredits.xhtml">My Credits</h:outputLink></li>
-						</h:form>
+						<!-- TODO: wenn wer lust hat das menu in ein array ploppen und die sache hier in nem loop generieren  -->
+						<li><h:outputLink styleClass="#{(view.viewId == '/home.xhtml') ? 'active' : ''}" value="#{request.contextPath}/home.xhtml">#{msg.nav_home}</h:outputLink></li>
+						<li><h:outputLink styleClass="#{(view.viewId == '/createproject.xhtml') ? 'active' : ''}" value="#{request.contextPath}/createproject.xhtml">#{msg.nav_createProject}</h:outputLink></li>
+						<li><h:outputLink styleClass="#{(view.viewId == '/fundproject.xhtml') ? 'active' : ''}" value="#{request.contextPath}/fundproject.xhtml">#{msg.nav_fundProject}</h:outputLink></li>
+						<li><h:outputLink styleClass="#{(view.viewId == '/myprojects.xhtml') ? 'active' : ''}" value="#{request.contextPath}/myprojects.xhtml">#{msg.nav_myProjects}</h:outputLink></li>
+						<li><h:outputLink styleClass="#{(view.viewId == '/mycredits.xhtml') ? 'active' : ''}" value="#{request.contextPath}/mycredits.xhtml">#{msg.nav_myCredits}</h:outputLink></li>
+						 
 					</ul>
 				</div>
 			</div>
@@ -44,9 +73,7 @@
 		<div class="content-wrapper">
 			
 			<div class="content-container">
-
 				<div class="alert"></div>
-			
 				<ui:insert name="content"/>
 				
 				<div class="clear" />
@@ -60,4 +87,5 @@
 	</div>
 </div>
 </h:body>
+</f:view>
 </html>

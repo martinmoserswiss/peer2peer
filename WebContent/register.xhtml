@@ -21,42 +21,42 @@
 	 			</script>
 	 			
 		
-				<h1 class="header"><span class="highlight">Register</span></h1>
-				<h2 class="header">Create a new account</h2>
-				<p class="description">Welcome to the registration your account.</p>
+				<h1 class="header"><span class="highlight">#{msg['page.register.title']}</span></h1>
+				<h2 class="header">#{msg['page.register.subtitle']}</h2>
+				<p class="description">#{msg['page.register.description']}</p>
 				
 				<h:form class="basicForm register">
 					<blockquote style="clear:both;">
-						<h:outputLabel for="email">EMail <b style="font-weight:normal; font-size: 11px;">(serves as accountname)</b> <em>*</em></h:outputLabel>
+						<h:outputLabel for="email">#{msg['form.email']} <b style="font-weight:normal; font-size: 11px;">(#{msg['form.servesAsAccountName']})</b> <em>*</em></h:outputLabel>
 						<h:inputText id="email" require="true"/>
 					</blockquote>
 
 					<blockquote style="clear:both;">
-						<h:outputLabel for="c_email">Reenter email adress <em>*</em></h:outputLabel>
+						<h:outputLabel for="c_email">#{msg['form.reenterEmail']} <em>*</em></h:outputLabel>
 					<h:inputText id="c_email" require="true"/>
 					</blockquote>
 
 					<blockquote style="clear:both;">
-						<h:outputLabel for="password">Password <em>*</em></h:outputLabel>
+						<h:outputLabel for="password">#{msg['form.password']}<em>*</em></h:outputLabel>
 					<h:inputSecret id="password" require="true"/>
 					</blockquote>
 
 					<blockquote style="clear:both;">
-						<h:outputLabel for="c_password">Reenter password <em>*</em></h:outputLabel>
+						<h:outputLabel for="c_password">#{msg['form.reenterPassword']} <em>*</em></h:outputLabel>
 					<h:inputSecret id="c_password" require="true"/>
 					</blockquote>
 
-					<h2 class="header">Contact information</h2>
-					<p class="description">We need to know how to reach you.</p>
+					<h2 class="header">#{msg['page.register.contactInformationTitle']}</h2>
+					<p class="description">#{msg['page.register.contactInformationDescription']}</p>
 
 
 					<blockquote style="clear:both;">
-						<h:outputLabel for="firstname">First Name <em>*</em></h:outputLabel>
+						<h:outputLabel for="firstname">#{msg['form.firstName']} <em>*</em></h:outputLabel>
 					<h:inputText id="firstname" require="true"/>
 					</blockquote>
 
 					<blockquote style="clear:both;">
-						<h:outputLabel for="lastname">Last name <em>*</em></h:outputLabel>
+						<h:outputLabel for="lastname">#{msg['form.lastName']} <em>*</em></h:outputLabel>
 					<h:inputText id="lastname" require="true"/>
 					</blockquote>
 
@@ -68,7 +68,7 @@
 					</blockquote>
 
 					<blockquote style="clear:both;">
-						<h:outputLabel for="">Country <em>*</em></h:outputLabel>
+						<h:outputLabel for="">#{msg['form.country']} <em>*</em></h:outputLabel>
 					<select name="country" tabindex="10" class="text">
 					<option value="">Select country</option>
 					<option value="CHE">Schweiz</option>
@@ -77,46 +77,46 @@
 					</blockquote>
 
 					<blockquote style="clear:both;">
-						<h:outputLabel for="city">City <em>*</em></h:outputLabel>
+						<h:outputLabel for="city">#{msg['form.city']} <em>*</em></h:outputLabel>
 					<h:inputText id="city" require="true"/>
 					</blockquote>
 
 					<blockquote style="clear:both;">
-						<h:outputLabel for="address">Street <em>*</em></h:outputLabel>
+						<h:outputLabel for="address">#{msg['form.street']} <em>*</em></h:outputLabel>
 					<h:inputText id="address" require="true"/>
 					</blockquote>
 
 					<blockquote style="clear:both;">
-						<h:outputLabel for="postalcode">Postalcode <em>*</em></h:outputLabel>
+						<h:outputLabel for="postalcode">#{msg['form.postalcode']} <em>*</em></h:outputLabel>
 					<h:inputText id="postalcode" require="true"/>
 					</blockquote>
 
 					<blockquote style="clear:both;">
-						<h:outputLabel for="phone">Telephone number </h:outputLabel>
+						<h:outputLabel for="phone">#{msg['form.phone']} </h:outputLabel>
 						<h:inputText id="phone" require="true"/>
 					</blockquote>
 
 
-					<h2 class="header">Additional Information</h2>
-					<p class="description">If you want to be able to create a project and recieve funding you need to give us some more information.</p>
-					
+					<h2 class="header">#{msg['page.register.additionalInformationTitle']}</h2>
+					<p class="description">#{msg['page.register.additionalInformationDescription']}</p>
+				
 					<blockquote style="clear:both;">
-						<h:outputLabel for="income">Yearly Income </h:outputLabel>
+						<h:outputLabel for="income">#{msg['form.income']} </h:outputLabel>
 						<h:inputText id="income" require="true"/>
 					</blockquote>
 					
 					<blockquote style="clear:both;">
-						<h:outputLabel for="expenses">Yearly expenses </h:outputLabel>
+						<h:outputLabel for="expenses">#{msg['form.expenses']} </h:outputLabel>
 						<h:inputText id="expenses" require="true"/>
 					</blockquote>
 					
 					<blockquote style="clear:both;">
-						<h:outputLabel for="existingcredits">Existing credits</h:outputLabel>
+						<h:outputLabel for="existingcredits">#{msg['form.existingCredits']}</h:outputLabel>
 						<h:inputText id="existingcredits" require="true"/>
 					</blockquote>
 
 					<blockquote style="clear:both;">
-						<h:commandButton type="submit" value="Submit registration">
+						<h:commandButton type="submit" value="#{msg['form.submitRegistration']}">
 							<f:ajax execute="@form" render="@form" />
 						</h:commandButton>
 					</blockquote>

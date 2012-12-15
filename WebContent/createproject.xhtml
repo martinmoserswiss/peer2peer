@@ -55,8 +55,14 @@
 					        <h:message id="expensesRequiredMessage" for="expenses" class="error" />
 						</blockquote>
 						<blockquote style="clear:both;">
-							<h:commandButton type="submit" value="#{msg['form.createProjectSubmit']}">
-								<f:ajax execute="@form" render="@form" actionListener="#{createProjectBean.formSubmitListener}"/>
+							<script>
+				 				$(function(){
+				 					alertHandler.display("success", "test alert.", 500);
+				 				});
+				 			</script>
+							<h:commandButton type="submit" value="#{msg['form.createProjectSubmit']}" 
+							onclick="jsf.ajax.request(this, event, {execute: @form, onevent:alert('hi'), render: '@form'}); return false;">
+
 							</h:commandButton>
 						</blockquote>
 					</h:form>	

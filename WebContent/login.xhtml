@@ -14,33 +14,30 @@
  			
     		<ui:define name="content">
 					
-					<h1 class="header">Login</h1>
+					<h1 class="header">#{msg['page.login.title']}</h1>
 					<div class="sectionRight">
-						<h2 class="header">New user</h2>
-						<p class="description">If you don't already have an account you can create one by clicking on the link below.</p>
-						
-						<p>You can easily register a new account by clicking <a href="#"><b>here</b></a>.</p>
+						<h2 class="header">#{msg['page.login.newUserSubtitle']}</h2>
+						<p class="description">#{msg['page.login.newUserDescription']}</p>
+						<p><h:outputLink value="#{request.contextPath}/register.xhtml">#{msg['link.registerNow']}</h:outputLink></p>
 					</div>
 					<div class="sectionLeft">
-						<h2 class="header">Already have an account</h2>
-						<p class="description">Please log in with your account details.</p>
+						<h2 class="header">#{msg['page.login.userSubtitle']}</h2>
+						<p class="description">#{msg['page.login.userDescription']}</p>
 						<h:form id="form" class="basicForm stackedForm login">
 		
-							<h:outputLabel>EMail address</h:outputLabel>
+							<h:outputLabel>#{msg['form.email']}</h:outputLabel>
 							<h:inputText id="username" require="true"/>
 							
-							<h:outputLabel>Password</h:outputLabel>
+							<h:outputLabel>#{msg['form.password']}</h:outputLabel>
 							<h:inputSecret id="password" require="true"/>
 							
 							<div class="clear"><!-- --></div>
 							
-							<h:commandButton type="submit" value="Login">
+							<h:commandButton type="submit" value="#{msg['form.login']}">
 								<f:ajax execute="@form" render="@form" />
 							</h:commandButton>
 
 						</h:form>
-						
-						<p>Register <a href="#">here</a> if you don't already have an account.</p>
 						
 					</div>
 						

@@ -21,22 +21,22 @@
 					<h:form class="basicForm" method="post" action="">
 
 						<blockquote style="clear:both;">
-							<h:outputLabel for="">Old password</h:outputLabel>
+							<h:outputLabel for="">#{msg['form.oldPassword']}</h:outputLabel>
 							<h:inputSecret id="old_password" require="true"/>
 						</blockquote>
 
 						<blockquote style="clear:both;">
-							<h:outputLabel for="">New password</h:outputLabel>
+							<h:outputLabel for="">#{msg['form.newPassword']}</h:outputLabel>
 							<h:inputSecret id="new_password" require="true"/>
 						</blockquote>
 
 						<blockquote style="clear:both;">
-							<h:outputLabel for="">Reenter new password</h:outputLabel>
+							<h:outputLabel for="">#{msg['form.newPasswordConfirm']}</h:outputLabel>
 							<h:inputSecret id="c_new_password" require="true"/>
 						</blockquote>
 
 						<blockquote style="clear:both;">
-							<h:commandButton type="submit" value="Change password">
+							<h:commandButton type="submit" value="#{msg['form.changePassword']}">
 								<f:ajax execute="@form" render="@form" />
 							</h:commandButton>
 						</blockquote>
@@ -47,29 +47,29 @@
 						<h2 class="header">#{msg['page.account.contactInformationTitle']}</h2>
 
 						<blockquote style="clear:both;">
-							<h:outputLabel for="">EMail</h:outputLabel>
+							<h:outputLabel for="">#{msg['form.email']}</h:outputLabel>
 							<h:inputText id="email" require="true"/>
 						</blockquote>
 
 						<blockquote style="clear:both;">
-							<h:outputLabel for="">First Name</h:outputLabel>
+							<h:outputLabel for="">#{msg['form.firstName']}</h:outputLabel>
 							<h:inputText id="firstname" require="true"/>
 						</blockquote>
 
 						<blockquote style="clear:both;">
-							<h:outputLabel for="">Last Name</h:outputLabel>
+							<h:outputLabel for="">#{msg['form.lastName']}</h:outputLabel>
 							<h:inputText id="lastname" require="true"/>
 						</blockquote>
 
 						<blockquote style="clear:both;">
-							<h:outputLabel for="">Birthdate</h:outputLabel>
+							<h:outputLabel for="">#{msg['form.birthdate']}</h:outputLabel>
 							<h:inputText id="birthdate1" require="true"/>
 							<h:inputText id="birthdate2" require="true"/>
 							<h:inputText id="birthdate3" require="true"/>
 						</blockquote>
 
 						<blockquote style="clear:both;">
-							<h:outputLabel for="">Country</h:outputLabel>
+							<h:outputLabel for="">#{msg['form.country']}</h:outputLabel>
 							<select id="question1" name="country" tabindex="10" class="text">
 
 								<option value="CHE">Schweiz</option>
@@ -79,44 +79,44 @@
 						</blockquote>
 
 						<blockquote style="clear:both;">
-							<h:outputLabel for="">City </h:outputLabel>
+							<h:outputLabel for="">#{msg['form.city']} </h:outputLabel>
 							<h:inputText id="city" require="true"/>
 						</blockquote>
 
 						<blockquote style="clear:both;">
-							<h:outputLabel for="">Street</h:outputLabel>
+							<h:outputLabel for="">#{msg['form.street']}</h:outputLabel>
 							<h:inputText id="address" require="true"/>
 						</blockquote>
 
 						<blockquote style="clear:both;">
-							<h:outputLabel for="">Postalcode</h:outputLabel>
+							<h:outputLabel for="">#{msg['form.postalcode']}</h:outputLabel>
 							<h:inputText id="postalcode" require="true"/>
 						</blockquote>
 
 						<blockquote style="clear:both;">
-							<h:outputLabel for="">Telephone number</h:outputLabel>
+							<h:outputLabel for="">#{msg['form.phone']}</h:outputLabel>
 							<h:inputText id="phone" require="true"/>
 						</blockquote>
 
 						<h2 class="header">#{msg['page.account.additionalInformationTitle']}</h2>
 
 						<blockquote style="clear:both;">
-							<h:outputLabel for="">Yearly Income </h:outputLabel>
+							<h:outputLabel for="">#{msg['form.income']}</h:outputLabel>
 							<h:inputText id="income" require="true"/>
 						</blockquote>
 						
 						<blockquote style="clear:both;">
-							<h:outputLabel for="">Yearly expenses </h:outputLabel>
+							<h:outputLabel for="">#{msg['form.expenses']}</h:outputLabel>
 							<h:inputText id="expenses" require="true"/>
 						</blockquote>
 						
 						<blockquote style="clear:both;">
-							<h:outputLabel for="">Existing credits</h:outputLabel>
+							<h:outputLabel for="">#{msg['form.existingCredits']}</h:outputLabel>
 							<h:inputText id="existingcredits" require="true"/>
 						</blockquote>
 
 						<blockquote style="clear:both;">
-							<h:commandButton type="submit" value="Update">
+							<h:commandButton type="submit" value="#{msg['form.update']}">
 								<f:ajax execute="@form" render="@form" />
 							</h:commandButton>
 						</blockquote>

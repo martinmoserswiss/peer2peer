@@ -19,10 +19,11 @@ public class LanguageChangedActionEvent implements ActionListener {
 	FacesContext context = FacesContext.getCurrentInstance();
 	Locale locale = new Locale(language);
 	context.getViewRoot().setLocale(locale);
+	
 	System.out.println("Changed to locale: "+locale);
 	HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(true);	
-	LanguageBean lb = (LanguageBean)(session.getAttribute("languageBean"));
-	//lb.setUserLocale(new Locale(language));
+	LanguageBean lb = (LanguageBean)(session.getAttribute("lang"));
+	lb.setLanguage(language);
 	System.out.println(lb);
 	System.out.println("-------------------------");
 

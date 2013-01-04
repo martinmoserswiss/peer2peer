@@ -5,6 +5,7 @@
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:a4j="http://richfaces.org/a4j"
       >
     <h:body>
  
@@ -57,13 +58,99 @@
 						<blockquote style="clear:both;">
 							<script>
 				 				$(function(){
-				 					alertHandler.display("success", "test alert.", 500);
+				 					//alertHandler.display("success", "test alert.", 500);
+				 					function testCallback(data) {
+				 					//	alertHandler.display("success", "test alert.", 500);
+				 					}
+				 					//jsf.ajax.addOnEvent(testCallback);
+				 					function handleAjaxResponse(xhr, status, args) {
+				 						alertHandler.display("success", "test", 0);
+				 					}
+				 					/*
+				 					jsf.ajax.addOnEvent(function(data) {
+				 				        var ajaxstatus = data.status; // Can be "begin", "complete" and "success"
+										var testOutput = "data content: ";
+				 				        
+				 				        for(var x in data)
+				 				        	{
+				 				        		testOutput += x;
+				 				        		testOutput += " ";
+				 				        	}
+				 				        switch (ajaxstatus) {
+				 				            case "begin": // This is called right before ajax request is been sent.
+				 				                //bla
+				 				                break;
+
+				 				            case "complete": // This is called right after ajax response is received.
+				 				                //bla
+				 				                break;
+
+				 				            case "success": // This is called when ajax response is successfully processed.
+				 				            	alertHandler.display("success", data.source.type + " " + document.getElementById("form:formSubmit"), 0);
+				 				                break;
+				 				        }
+				 				    });
+				 					/*
+				 					jsf.ajax.addOnEvent(function(data) {
+				 				        var ajaxstatus = data.status; // Can be "begin", "complete" and "success"
+				 				        var ajaxloader = document.getElementById("ajaxloader");
+
+				 				        switch (ajaxstatus) {
+				 				            case "begin": // This is called right before ajax request is been sent.
+				 				                //bla
+				 				                break;
+
+				 				            case "complete": // This is called right after ajax response is received.
+				 				                //bla
+				 				                break;
+
+				 				            case "success": // This is called when ajax response is successfully processed.
+				 				                //bla
+				 				                break;
+				 				        }
+				 				    });/**/
 				 				});
 				 			</script>
-							<h:commandButton type="submit" value="#{msg['form.createProjectSubmit']}" 
-							onclick="jsf.ajax.request(this, event, {execute: @form, onevent:alert('hi'), render: '@form'}); return false;">
+				 			
+				 			
+				 			<h3> Status:</h3>
+<textarea id="statusArea" cols="40" rows="10" readonly="readonly" />
+<!-- 
+//IDEA: make an <outputScript> for the alert and set a condition in the bean, rerender the script on submit of the form 
+//if the form is validated successfully submit the data to the backing bean and the alert will be displaied. the message 
+//is set in the script under an additional condition
+-->
 
-							</h:commandButton>
+<h:outputScript id="alertScript" rendered="#{form.valid}">
+	$(function(){
+		alertHandler.display("success", "test", 0);
+	});
+</h:outputScript>
+
+<script>
+var statusUpdate = function statusUpdate(data) {
+    var statusArea = document.getElementById("statusArea");
+    var text = statusArea.value;
+    text = text + "Name: "+data.source.id;
+    if (data.type === "event") {
+        text = text +" Event: "+data.name+"\n";
+    } else {  // otherwise, it's an error
+        text = text + " Error: "+data.name+"\n";
+    }
+    statusArea.value = text;
+};
+
+// Setup the statusUpdate function to hear all events on the page
+jsf.ajax.addOnEvent(statusUpdate);
+jsf.ajax.addOnError(statusUpdate);</script>
+
+							<a4j:commandButton value="" execute="@none" oncomplete="#{}" />
+				 			<!-- 
+				 			<h:commandButton id="formSubmit" type="submit"
+							ajax="true" 
+							value="#{msg['form.createProjectSubmit']}">
+								<f:ajax execute="@form" render="@form content"  />
+							</h:commandButton> -->
 						</blockquote>
 					</h:form>	
     		</ui:define>

@@ -9,6 +9,7 @@ import javax.faces.bean.ViewScoped;
 @ViewScoped
 public class CreateProjectBean implements Serializable {
 
+	
 	private String projectName;
 	private int creditAmount;
 	private int duration;

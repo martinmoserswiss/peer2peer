@@ -55,7 +55,6 @@
 					        </h:inputText>
 					        <h:message id="expensesRequiredMessage" for="expenses" class="error" />
 						</blockquote>
-						<blockquote style="clear:both;">
 							<script>
 				 				$(function(){
 				 					//alertHandler.display("success", "test alert.", 500);
@@ -114,6 +113,7 @@
 				 			
 				 			
 				 			<h3> Status:</h3>
+				 			<p>testoutput of ajax events that are happening. goal: find a way to execut the script with the ID alertScript after the form has been submitted.</p>
 <textarea id="statusArea" cols="40" rows="10" readonly="readonly" />
 <!-- 
 //IDEA: make an <outputScript> for the alert and set a condition in the bean, rerender the script on submit of the form 
@@ -143,14 +143,14 @@ var statusUpdate = function statusUpdate(data) {
 // Setup the statusUpdate function to hear all events on the page
 jsf.ajax.addOnEvent(statusUpdate);
 jsf.ajax.addOnError(statusUpdate);</script>
-
-							<a4j:commandButton value="" execute="@none" oncomplete="#{}" />
-				 			<!-- 
+						
+						<blockquote style="clear:both;">
+							
 				 			<h:commandButton id="formSubmit" type="submit"
 							ajax="true" 
 							value="#{msg['form.createProjectSubmit']}">
-								<f:ajax execute="@form" render="@form content"  />
-							</h:commandButton> -->
+								<f:ajax execute="@form" render="@form alertScript"  />
+							</h:commandButton> 
 						</blockquote>
 					</h:form>	
     		</ui:define>

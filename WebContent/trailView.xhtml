@@ -13,16 +13,16 @@
 		<table>
 				<tr>
 					<td><h:outputText value="Email"/></td>
-					<td><h:inputText id="name" value="#{login.email}" required="true"/></td>
+					<td><h:inputText id="name" value="#{loginBean.email}" required="true"/></td>
 				</tr>
 				<tr>
 					<td><h:outputText value="Password"/></td>
-					<td><h:inputSecret  id="age" value="#{login.password}"/></td>
+					<td><h:inputSecret  id="age" value="#{loginBean.password}"/></td>
 				</tr>
 			</table>
-			<h:commandButton value="Say Hello" action="#{login.login}"/>
+			<h:commandButton value="Say Hello" action="#{loginBean.login}"/>
 			<p/>
-			<h:outputText value="#{login.message}"/>
+			<h:outputText value="#{loginBean.message}"/>
 		</h:form>
 	</h:body>
 </html>

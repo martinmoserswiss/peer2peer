@@ -18,8 +18,10 @@ import ch.bfh.advancedweb.peer2peer.model.User;
 @SessionScoped
 public class UserController implements Serializable {
 	
-	@ManagedProperty(value="#{entityManager}")
-	EntityManager em;
+	
+
+	@ManagedProperty("#{entityManager}")
+	private EntityManager entityManager;
 	
 	boolean isLoggedIn = false;
 
@@ -27,18 +29,22 @@ public class UserController implements Serializable {
 		
 	}
 	
+	public void setEntityManager(EntityManager entityManager) {
+		this.entityManager = entityManager;
+	}
+	
 	public boolean isValid(String email, String password){
 		
-		em = Persistence.createEntityManagerFactory(
+		entityManager = Persistence.createEntityManagerFactory(
 				"ch.bfh.advancedweb.peer2peer.model").createEntityManager();
 		
-		Query q = em.createQuery("select u from User AS u where u.email = :email AND u.password = :password");
+		Query q = entityManager.createQuery("select u from User AS u where u.email = :email AND u.password = :password");
 		q.setParameter("email", email);
 		q.setParameter("password", password);
 		
 		@SuppressWarnings("unchecked")
 		List<User> foundUsers = q.getResultList();
-		if(foundUsers != null){
+		if(foundUsers != null && foundUsers.size() != 0){
 			User firstUser = (User)foundUsers.get(0);
 			if(firstUser.getEmail().equals(email)&&firstUser.getPassword().equals(password)){
 				this.isLoggedIn = true;

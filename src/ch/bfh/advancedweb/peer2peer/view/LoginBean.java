@@ -5,21 +5,21 @@ import java.io.Serializable;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
-import javax.faces.bean.ViewScoped;
 
 import ch.bfh.advancedweb.peer2peer.controller.UserController;
 
-@ManagedBean(name="login")
+@ManagedBean
 @SessionScoped
 public class LoginBean implements Serializable {
 	
-	/**
-	 * 
-	 */
+	
+	
+
 	private static final long serialVersionUID = 1L;
 	
-	@ManagedProperty(value="#{LoginBean}")
+	@ManagedProperty("#{userController}")
 	private UserController userController;
+	
 	private String email;
 	private String password;
 	private String message;
@@ -33,12 +33,16 @@ public class LoginBean implements Serializable {
 	}
 	
 	public String login(){
+		
+		
 		if(this.userController.isValid(this.email, this.password)){
 			this.message = "Successful";
 		}
 		else{
 			this.message = "Not right password";
 		}
+		
+		
 		return null;
 	}
 	

@@ -26,17 +26,19 @@
 						<h:form id="form" class="basicForm stackedForm login">
 		
 							<h:outputLabel>#{msg['form.email']}</h:outputLabel>
-							<h:inputText id="username" require="true"/>
+							<h:inputText id="username" value="#{loginBean.email}" require="true"/>
 							
 							<h:outputLabel>#{msg['form.password']}</h:outputLabel>
-							<h:inputSecret id="password" require="true"/>
+							<h:inputSecret id="password" value="#{loginBean.password}" require="true"/>
 							
 							<div class="clear"><!-- --></div>
 							
-							<h:commandButton type="submit" value="#{msg['form.login']}">
+							<h:commandButton action="#{loginBean.login}" type="submit" value="#{msg['form.login']}">
 								<f:ajax execute="@form" render="@form" />
 							</h:commandButton>
-
+		
+							<h:outputText value="#{loginBean.message}"/>
+								
 						</h:form>
 						
 					</div>

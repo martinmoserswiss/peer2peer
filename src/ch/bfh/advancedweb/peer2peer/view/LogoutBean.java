@@ -5,67 +5,45 @@ import java.io.Serializable;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.ExternalContext;
+import javax.faces.context.FacesContext;
+import javax.servlet.http.HttpSession;
 
 import ch.bfh.advancedweb.peer2peer.controller.UserController;
 
 @ManagedBean
 @SessionScoped
-public class LoginBean implements Serializable {
+public class LogoutBean implements Serializable {
 	
-	
-	
-
 	private static final long serialVersionUID = 1L;
 	
 	@ManagedProperty("#{userController}")
 	private UserController userController;
-	
-	private String email;
-	private String password;
+
 	private String message;
+	private boolean isLoggedOut = false;
 	
-	public LoginBean(){
-		this.message = "idle";
+	public LogoutBean(){
+		
 	}
 
 	public void setUserController(UserController userController) {
 		this.userController = userController;
 	}
 	
-	public String login(){
-		
-		
-		if(this.userController.login(this.email, this.password)){
-			this.message = "Successful";
-		}
-		else{
-			this.message = "fuck you!";
-		}
-		
-		
-		return "home?faces-redirect=true";
+	public void logout(){
+
+		this.message = "isLoggedOut wurde auf true gesetzt";
+		FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
+
 	}
 	
 	public String getMessage(){
 		return this.message;
 	}
-
-	public String getEmail() {
-		return this.email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
-	public String getPassword() {
-		return this.password;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
-	}
 	
-	
+	public boolean isLoggedOut() {
+		return isLoggedOut;
+	}
 
 }

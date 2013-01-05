@@ -45,11 +45,11 @@
 	
 				</div>
 				<div class="userlinks">
-					<ui:fragment rendered="false">
+					<ui:fragment rendered="#{userController.isLoggedIn()}">
 					    <h:outputLink value="#{request.contextPath}/logout.xhtml">logout</h:outputLink><em>|</em> 
-						<h:outputLink  value="#{request.contextPath}/manageaccount.xhtml">Account</h:outputLink> <em>|</em> <span>Welcome <b>Martin</b></span><!-- -->
+						<h:outputLink  value="#{request.contextPath}/manageaccount.xhtml">Account</h:outputLink> <em>|</em> <span>Welcome <b>#{userController.user.getFirstname()}</b></span><!-- -->
 					</ui:fragment>
-					<ui:fragment rendered="true">
+					<ui:fragment rendered="#{!userController.isLoggedIn()}">
 					    <h:outputLink value="#{request.contextPath}/login.xhtml">login</h:outputLink><em>|</em> 
 						<h:outputLink  value="#{request.contextPath}/register.xhtml">register</h:outputLink>
 					</ui:fragment>

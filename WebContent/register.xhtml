@@ -28,48 +28,48 @@
 				<h:form class="basicForm register">
 					<blockquote style="clear:both;">
 						<h:outputLabel for="email">#{msg['form.email']} <b style="font-weight:normal; font-size: 11px;">(#{msg['form.servesAsAccountName']})</b> <em>*</em></h:outputLabel>
-						<h:inputText id="email" require="true"/>
+						<h:inputText value="#{registerBean.email}" id="email" require="true"/>
 					</blockquote>
 
 					<blockquote style="clear:both;">
 						<h:outputLabel for="c_email">#{msg['form.reenterEmail']} <em>*</em></h:outputLabel>
-					<h:inputText id="c_email" require="true"/>
+					<h:inputText value="#{registerBean.c_email}" id="c_email" require="true"/>
 					</blockquote>
 
 					<blockquote style="clear:both;">
 						<h:outputLabel for="password">#{msg['form.password']}<em>*</em></h:outputLabel>
-					<h:inputSecret id="password" require="true"/>
+					<h:inputSecret value="#{registerBean.password}" id="password" require="true"/>
 					</blockquote>
 
 					<blockquote style="clear:both;">
 						<h:outputLabel for="c_password">#{msg['form.reenterPassword']} <em>*</em></h:outputLabel>
-					<h:inputSecret id="c_password" require="true"/>
+					<h:inputSecret value="#{registerBean.c_password}" id="c_password" require="true"/>
 					</blockquote>
-
+					
 					<h2 class="header">#{msg['page.register.contactInformationTitle']}</h2>
 					<p class="description">#{msg['page.register.contactInformationDescription']}</p>
 
 
 					<blockquote style="clear:both;">
 						<h:outputLabel for="firstname">#{msg['form.firstName']} <em>*</em></h:outputLabel>
-					<h:inputText id="firstname" require="true"/>
+					<h:inputText value="#{registerBean.firstname}" id="firstname" require="true"/>
 					</blockquote>
 
 					<blockquote style="clear:both;">
 						<h:outputLabel for="lastname">#{msg['form.lastName']} <em>*</em></h:outputLabel>
-					<h:inputText id="lastname" require="true"/>
+					<h:inputText value="#{registerBean.lastname}" id="lastname" require="true"/>
 					</blockquote>
 
 					<blockquote style="clear:both;">
 						<h:outputLabel for="">Birthdate </h:outputLabel>
-						<h:inputText id="register_birthdate1" require="true"/>
-						<h:inputText id="register_birthdate2" require="true"/>
-						<h:inputText id="register_birthdate3" require="true"/>
+						<h:inputText value="#{registerBean.birthdate1}" id="register_birthdate1" require="true"/>
+						<h:inputText value="#{registerBean.birthdate2}" id="register_birthdate2" require="true"/>
+						<h:inputText value="#{registerBean.birthdate3}" id="register_birthdate3" require="true"/>
 					</blockquote>
 
 					<blockquote style="clear:both;">
 						<h:outputLabel for="">#{msg['form.country']} <em>*</em></h:outputLabel>
-					<select name="country" tabindex="10" class="text">
+					<select value="#{registerBean.country}" name="country" tabindex="10" class="text">
 					<option value="">Select country</option>
 					<option value="CHE">Schweiz</option>
 					<option value="DEU">Deutschland (Bundesrep.)</option>
@@ -78,22 +78,22 @@
 
 					<blockquote style="clear:both;">
 						<h:outputLabel for="city">#{msg['form.city']} <em>*</em></h:outputLabel>
-					<h:inputText id="city" require="true"/>
+					<h:inputText value="#{registerBean.city}" id="city" require="true"/>
 					</blockquote>
 
 					<blockquote style="clear:both;">
 						<h:outputLabel for="address">#{msg['form.street']} <em>*</em></h:outputLabel>
-					<h:inputText id="address" require="true"/>
+					<h:inputText value="#{registerBean.street}" id="address" require="true"/>
 					</blockquote>
 
 					<blockquote style="clear:both;">
 						<h:outputLabel for="postalcode">#{msg['form.postalcode']} <em>*</em></h:outputLabel>
-					<h:inputText id="postalcode" require="true"/>
+					<h:inputText value="#{registerBean.postalcode}" id="postalcode" require="true"/>
 					</blockquote>
 
 					<blockquote style="clear:both;">
 						<h:outputLabel for="phone">#{msg['form.phone']} </h:outputLabel>
-						<h:inputText id="phone" require="true"/>
+						<h:inputText value="#{registerBean.phone}" id="phone" require="true"/>
 					</blockquote>
 
 
@@ -102,21 +102,21 @@
 				
 					<blockquote style="clear:both;">
 						<h:outputLabel for="income">#{msg['form.income']} </h:outputLabel>
-						<h:inputText id="income" require="true"/>
+						<h:inputText value="#{registerBean.income}" id="income" require="true"/>
 					</blockquote>
 					
 					<blockquote style="clear:both;">
 						<h:outputLabel for="expenses">#{msg['form.expenses']} </h:outputLabel>
-						<h:inputText id="expenses" require="true"/>
+						<h:inputText value="#{registerBean.expenses}" id="expenses" require="true"/>
 					</blockquote>
 					
 					<blockquote style="clear:both;">
 						<h:outputLabel for="existingcredits">#{msg['form.existingCredits']}</h:outputLabel>
-						<h:inputText id="existingcredits" require="true"/>
+						<h:inputText value="#{registerBean.existing_credits}" id="existingcredits" require="true"/>
 					</blockquote>
 
 					<blockquote style="clear:both;">
-						<h:commandButton type="submit" value="#{msg['form.submitRegistration']}">
+						<h:commandButton action="#{registerBean.register()}" type="submit" value="#{msg['form.submitRegistration']}">
 							<f:ajax execute="@form" render="@form" />
 						</h:commandButton>
 					</blockquote>

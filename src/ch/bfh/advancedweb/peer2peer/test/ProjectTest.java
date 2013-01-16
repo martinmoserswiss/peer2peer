@@ -19,8 +19,8 @@ public class ProjectTest {
 		/* ------ Create -------*/
 		
 		Project project = new Project();
-		project.setProjectName("Kran kaufen");
-		project.setAmount(10000);
+		project.setProjectName("Bank eröffnen");
+		project.setAmount(2500000);
 		project.setStatus(ProjectStatus.pending);
 
 		EntityManager em = Persistence.createEntityManagerFactory(

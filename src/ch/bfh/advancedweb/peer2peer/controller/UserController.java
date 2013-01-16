@@ -12,6 +12,7 @@ import javax.persistence.Persistence;
 import javax.persistence.Query;
 import javax.servlet.http.HttpSession;
 
+import org.junit.Assert;
 
 import com.sun.xml.bind.v2.TODO;
 

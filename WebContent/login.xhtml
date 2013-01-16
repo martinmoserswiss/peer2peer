@@ -33,9 +33,8 @@
 							
 							<div class="clear"><!-- --></div>
 							
-							<h:commandButton action="#{loginBean.login}" type="submit" value="#{msg['form.login']}">
-								<f:ajax execute="@form" render="@form" />
-							</h:commandButton>
+							<h:commandButton action="#{loginBean.login()}" type="submit" value="#{msg['form.login']}"/>
+							
 		
 							<h:outputText value="#{loginBean.message}"/>
 								

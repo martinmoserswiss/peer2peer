@@ -12,7 +12,6 @@ import javax.persistence.Persistence;
 import javax.persistence.Query;
 import javax.servlet.http.HttpSession;
 
-import org.junit.Assert;
 
 import com.sun.xml.bind.v2.TODO;
 
@@ -27,7 +26,7 @@ public class UserController implements Serializable {
 	@ManagedProperty("#{entityManager}")
 	private EntityManager entityManager;
 	
-	private boolean isLoggedIn = false;
+	private boolean loggedIn = false;
 	private User user;
 
 	public UserController(){
@@ -52,7 +51,7 @@ public class UserController implements Serializable {
 		if(foundUsers != null && foundUsers.size() != 0){
 			User firstUser = (User)foundUsers.get(0);
 			if(firstUser.getEmail().equals(email)&&firstUser.getPassword().equals(password)){
-				this.isLoggedIn = true;
+				this.loggedIn = true;
 				this.setUser(firstUser);
 				return true;
 			}
@@ -61,8 +60,14 @@ public class UserController implements Serializable {
 		else return false;
 	}
 	
+	public String logout() {
+	    ((HttpSession) FacesContext.getCurrentInstance().getExternalContext()
+	         .getSession(true)).invalidate();
+	     return "home";
+	}
+	
 	public boolean isLoggedIn(){
-		return this.isLoggedIn ? true : false;
+		return this.loggedIn;
 	}
 
 	public User getUser() {

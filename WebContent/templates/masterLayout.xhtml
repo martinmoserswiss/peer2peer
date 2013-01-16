@@ -45,11 +45,11 @@
 	
 				</div>
 				<div class="userlinks">
-					<ui:fragment rendered="#{userController.isLoggedIn()}">
-					    <h:outputLink value="#{request.contextPath}/logout.xhtml">logout</h:outputLink><em>|</em> 
+					<ui:fragment rendered="#{userController.loggedIn}">
+					    <h:form><h:commandLink action="#{userController.logout}" value="logout"/></h:form><em>|</em> 
 						<h:outputLink  value="#{request.contextPath}/manageaccount.xhtml">Account</h:outputLink> <em>|</em> <span>Welcome <b>#{userController.user.getFirstname()}</b></span><!-- -->
 					</ui:fragment>
-					<ui:fragment rendered="#{!userController.isLoggedIn()}">
+					<ui:fragment rendered="#{!userController.loggedIn}">
 					    <h:outputLink value="#{request.contextPath}/login.xhtml">login</h:outputLink><em>|</em> 
 						<h:outputLink  value="#{request.contextPath}/register.xhtml">register</h:outputLink>
 					</ui:fragment>
@@ -61,11 +61,12 @@
 					<ul>
 						<!-- TODO: wenn wer lust hat das menu in ein array ploppen und die sache hier in nem loop generieren  -->
 						<li><h:outputLink styleClass="#{(view.viewId == '/home.xhtml') ? 'active' : ''}" value="#{request.contextPath}/home.xhtml">#{msg.nav_home}</h:outputLink></li>
-						<li><h:outputLink styleClass="#{(view.viewId == '/createproject.xhtml') ? 'active' : ''}" value="#{request.contextPath}/createproject.xhtml">#{msg.nav_createProject}</h:outputLink></li>
-						<li><h:outputLink styleClass="#{(view.viewId == '/fundproject.xhtml') ? 'active' : ''}" value="#{request.contextPath}/fundproject.xhtml">#{msg.nav_fundProject}</h:outputLink></li>
-						<li><h:outputLink styleClass="#{(view.viewId == '/myprojects.xhtml') ? 'active' : ''}" value="#{request.contextPath}/myprojects.xhtml">#{msg.nav_myProjects}</h:outputLink></li>
-						<li><h:outputLink styleClass="#{(view.viewId == '/mycredits.xhtml') ? 'active' : ''}" value="#{request.contextPath}/mycredits.xhtml">#{msg.nav_myCredits}</h:outputLink></li>
-						 
+						<ui:fragment rendered="#{userController.loggedIn}">
+							<li><h:outputLink styleClass="#{(view.viewId == '/createproject.xhtml') ? 'active' : ''}" value="#{request.contextPath}/createproject.xhtml">#{msg.nav_createProject}</h:outputLink></li>
+							<li><h:outputLink styleClass="#{(view.viewId == '/fundproject.xhtml') ? 'active' : ''}" value="#{request.contextPath}/fundproject.xhtml">#{msg.nav_fundProject}</h:outputLink></li>
+							<li><h:outputLink styleClass="#{(view.viewId == '/myprojects.xhtml') ? 'active' : ''}" value="#{request.contextPath}/myprojects.xhtml">#{msg.nav_myProjects}</h:outputLink></li>
+							<li><h:outputLink styleClass="#{(view.viewId == '/mycredits.xhtml') ? 'active' : ''}" value="#{request.contextPath}/mycredits.xhtml">#{msg.nav_myCredits}</h:outputLink></li>
+						</ui:fragment>
 					</ul>
 				</div>
 			</div>

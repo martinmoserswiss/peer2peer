@@ -56,15 +56,15 @@ public class CreateProjectBean implements Serializable {
 		double expenses = userController.getUser().getExpenses();
 		int existingCredits = userController.getUser().getExsisting_credits();
 		
-		double netIncome = income-expenses;
+		double netIncome = income-expenses-existingCredits;
 		
 		double fluidityOverTimeFrame = netIncome*duration;
 		
-		if(fluidityOverTimeFrame > amount)
+		if(fluidityOverTimeFrame > amount	)
 		{
 			double fluidityAfterPayment = fluidityOverTimeFrame-amount;
-			
-			return (int)fluidityAfterPayment/(int)netIncome*10;
+			int mark = (int)fluidityAfterPayment/(int)netIncome*10;
+			return Math.min(mark, 10);
 		}
 			
 		

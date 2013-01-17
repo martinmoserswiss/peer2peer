@@ -12,6 +12,11 @@
  			
     		<ui:define name="content">
 				
+					<h:outputScript rendered="#{fundProjectBean.success}">
+		 				$(function(){
+		 					alertHandler.display("success", "#{fundProjectBean.successMessage}", 0);
+		 				});
+		 			</h:outputScript>
 				
 					<h1 class="header">#{msg['page.fundProject.title']}</h1>
 					<h2 class="header">#{msg['page.fundProject.subtitle']}</h2>
@@ -79,58 +84,8 @@
 					    </h:dataTable>
 					    
 					</h:panelGroup>
-					<h:outputText value="Table is empty!" rendered="#{empty fundProjectBean.projects}" />
-					<table class="highlight">
-						<tr class="odd">
-							<th>#{msg['project.id']}</th>
-							<th>#{msg['project.name']}</th>
-							<th>#{msg['project.amount']}</th>
-							<th>#{msg['project.duration']}</th>
-							<th>#{msg['project.mark']}</th>
-							<th>#{msg['project.fundThis']}</th>
-						</tr>
-						<tr class="even">
-							<td>1</td>
-							<td>Some stuff I wanna do</td>
-							<td>300'000 $</td>
-							<td>2 years</td>
-							<td><span class="markTop">10</span></td>
-							<td>
-								<h:form class="basicForm singleLineForm">
-									<h:outputLabel><h:inputText required="true" style="width:20px"/></h:outputLabel>
-									<a href="#">#{msg['link.send']}</a>
-								</h:form>
-							</td>
-						</tr>
-						<tr class="odd">
-							<td>1</td>
-							<td>I dunno, I need money I guess</td>
-							<td>40'000 $</td>
-							<td>5 years</td>
-							<td><span class="markLow">3</span></td>
-							<td>
-								<h:form class="basicForm singleLineForm">
-									<h:outputLabel><h:inputText required="true" style="width:20px"/></h:outputLabel>
-									<a href="#">#{msg['link.send']}</a>
-								</h:form>
-							</td>
-						</tr>
+					<h:outputText value="No results!" rendered="#{empty fundProjectBean.projects}" />
 					
-						<tr class="even">
-							<td>1</td>
-							<td>Sample name</td>
-							<td>400'000 $</td>
-							<td>1 year</td>
-							<td><span class="markMedium">5</span></td>
-							<td>
-								<h:form class="basicForm singleLineForm">
-									<h:outputLabel><h:inputText required="true" style="width:20px"/></h:outputLabel>
-									<a href="#">#{msg['link.send']}</a>
-								</h:form>
-							</td>
-						</tr>
-						
-					</table>
 	
     		</ui:define>
  

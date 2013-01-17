@@ -31,6 +31,25 @@ public class FundProjectBean implements Serializable {
 	
 	private double fundRate;
 	
+	private boolean success = false;
+	private String successMessage;
+	
+	public boolean isSuccess() {
+		return success;
+	}
+
+	public void setSuccess(boolean success) {
+		this.success = success;
+	}
+
+	public String getSuccessMessage() {
+		return successMessage;
+	}
+
+	public void setSuccessMessage(String successMessage) {
+		this.successMessage = successMessage;
+	}
+
 	private int totalFunds;
 	private int maxPerProject;
 	
@@ -76,14 +95,17 @@ public class FundProjectBean implements Serializable {
 		em.persist(loan);
 		em.getTransaction().commit();
 		
+		this.success=true;
+		this.successMessage="Your fund has been registered!";
+		
 		return "hi";
 	}
 
-	public double getfundRate() {
+	public double getFundRate() {
 		return fundRate;
 	}
 
-	public void setfundRate(double fundRate) {
+	public void setFundRate(double fundRate) {
 		this.fundRate = fundRate;
 	}
 

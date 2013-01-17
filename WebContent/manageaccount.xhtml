@@ -17,6 +17,12 @@
  			
     		<ui:define name="content">
 					
+					
+					<h:outputScript rendered="#{manageAccountBean.success}">
+		 				$(function(){
+		 					alertHandler.display("#{manageAccountBean.msgType}", "#{manageAccountBean.successMessage}", 0);
+		 				});
+		 			</h:outputScript>
 					<h1 class="header"><span class="highlight">#{msg['page.account.title']}</span></h1>
 
 					<h2 class="header">#{msg['page.account.passwordTitle']}</h2>
@@ -40,7 +46,7 @@
 
 						<blockquote style="clear:both;">
 							<h:commandButton action="#{manageAccountBean.changePassword()}" type="submit" value="#{msg['form.changePassword']}">
-								<f:ajax execute="@form" render="@form" />
+								
 							</h:commandButton>
 						</blockquote>
 

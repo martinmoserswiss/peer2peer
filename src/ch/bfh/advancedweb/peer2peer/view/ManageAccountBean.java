@@ -49,6 +49,36 @@ public class ManageAccountBean implements Serializable {
 
 	private String message;
 	
+	
+
+	private String msgType = "success";
+	public String getMsgType() {
+		return msgType;
+	}
+
+	public void setMsgType(String msgType) {
+		this.msgType = msgType;
+	}
+
+	private boolean success = false;
+	private String successMessage;
+	
+	public boolean isSuccess() {
+		return success;
+	}
+
+	public void setSuccess(boolean success) {
+		this.success = success;
+	}
+
+	public String getSuccessMessage() {
+		return successMessage;
+	}
+
+	public void setSuccessMessage(String successMessage) {
+		this.successMessage = successMessage;
+	}
+	
 	public ManageAccountBean(){
 		
 	}
@@ -63,17 +93,26 @@ public class ManageAccountBean implements Serializable {
 				this.manageAccountController.changePassword(this.userController.getUser());
 		
 				// TODO: Give a information-message, that password succesfully changed
+				this.success=true;
+				this.successMessage="Password changed";
+				this.msgType="success";
 				
 			}
 			else{
 				// TODO: Give an error-message, that both new passwords were wrong
+				this.success=true;
+				this.successMessage="New passwords mismatch.";
+				this.msgType = "error";
 			}
 		}
 		else{
 			// TODO: Give an error-message, that something went wrong (wrong password)
+			this.success=true;
+			this.successMessage="Something went wrong!";
+			this.msgType = "error";
 		}
 		
-		return "home";
+		return "";
 	}
 	
 	public void loadContactInformation(){

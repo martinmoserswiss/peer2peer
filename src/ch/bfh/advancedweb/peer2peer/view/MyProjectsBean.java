@@ -12,6 +12,7 @@ import javax.faces.bean.SessionScoped;
 import javax.faces.bean.ViewScoped;
 import javax.persistence.EntityManager;
 import javax.persistence.Persistence;
+import javax.persistence.Query;
 
 import ch.bfh.advancedweb.peer2peer.controller.ManageAccountController;
 import ch.bfh.advancedweb.peer2peer.controller.MyCreditsController;
@@ -19,6 +20,8 @@ import ch.bfh.advancedweb.peer2peer.controller.MyProjectsController;
 import ch.bfh.advancedweb.peer2peer.controller.RegisterController;
 import ch.bfh.advancedweb.peer2peer.controller.UserController;
 import ch.bfh.advancedweb.peer2peer.model.Credit;
+import ch.bfh.advancedweb.peer2peer.model.Loan;
+import ch.bfh.advancedweb.peer2peer.model.LoanStatus;
 import ch.bfh.advancedweb.peer2peer.model.Project;
 import ch.bfh.advancedweb.peer2peer.model.User;
 
@@ -43,6 +46,16 @@ public class MyProjectsBean implements Serializable {
 		this.myProjectsController = new MyProjectsController();
 		this.projectList = this.myProjectsController.loadProjects(this.userController.getUser());
 		
+	}
+	
+	public String acceptFund(Loan loan){
+		this.myProjectsController.acceptFund(loan);
+		return "myprojects";
+	}
+	
+	public String denieFund(Loan loan){
+		this.myProjectsController.denieFund(loan);
+		return "myprojects";
 	}
 	
 

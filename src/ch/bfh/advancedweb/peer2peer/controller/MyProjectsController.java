@@ -55,6 +55,48 @@ public class MyProjectsController implements Serializable {
 		
 	}
 	
+	public void acceptFund(Loan loan){
+		
+		Query q = this.entityManager.createQuery("select a from Loan a where a.project =: project");
+		q.setParameter("project", loan.getProject());
+		
+		@SuppressWarnings("unchecked")
+		List<Loan> foundLoans = q.getResultList();
+		
+		for (Loan foundloan : foundLoans) {
+			this.entityManager.getTransaction().begin();
+			foundloan.setStatus(LoanStatus.denied);
+			this.entityManager.getTransaction().commit();
+		}
+		
+		Query q2 = this.entityManager.createQuery("select a from Loan a where a =: loan");
+		q2.setParameter("loan", loan);
+		
+		@SuppressWarnings("unchecked")
+		List<Loan> foundLoans2 = q2.getResultList();
+		Loan firstLoan = foundLoans2.get(0);
+
+		this.entityManager.getTransaction().begin();
+		firstLoan.setStatus(LoanStatus.accepted);
+		this.entityManager.getTransaction().commit();
+		
+	}
+	
+	public void denieFund(Loan loan){
+
+		
+		Query q = this.entityManager.createQuery("select a from Loan a where a =: loan");
+		q.setParameter("loan", loan);
+		
+		@SuppressWarnings("unchecked")
+		List<Loan> foundLoans = q.getResultList();
+		Loan firstLoan = foundLoans.get(0);
+
+		this.entityManager.getTransaction().begin();
+		firstLoan.setStatus(LoanStatus.denied);
+		this.entityManager.getTransaction().commit();
+	}
+	
 	public void setEntityManager(EntityManager entityManager) {
 		this.entityManager = entityManager;
 	}

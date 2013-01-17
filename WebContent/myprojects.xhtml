@@ -10,7 +10,9 @@
  
     	<ui:composition template="/templates/masterLayout.xhtml">
  			
- 			
+ 			<f:metadata>
+				<f:event listener="#{myProjectsBean.loadProjects}" type="preRenderView"/>
+			</f:metadata>
  			
     		<ui:define name="content">
 
@@ -18,14 +20,92 @@
 					<h2 class="header">#{msg['page.myProjects.subtitle']}</h2>
 					<p class="description">#{msg['page.myProjects.description']}</p>
 					
-					<h:form id="form" class="basicForm singleLineForm">
-						<div class="formGroup">
-							<h3 class="title">#{msg['page.myProjects.displayStatusTitle']}</h3>
-							<h:outputLabel><input type="checkbox" name="statusPending" checked="checked" /> #{msg['form.pending']}</h:outputLabel>
-							<h:outputLabel><input type="checkbox" name="statusActive" checked="checked" /> #{msg['form.active']}</h:outputLabel>
-							<h:outputLabel><input type="checkbox" name="statusFinished" checked="checked" /> #{msg['form.finished']}</h:outputLabel>
-						</div>
-					</h:form>
+					
+					<table class="highlight">
+						<tr class="odd">
+							<th>#{msg['project.name']}</th>
+							<th>#{msg['project.amount']}</th>
+							<th>#{msg['project.duration']}</th>
+							<th>#{msg['project.startDate']}</th>
+							<th>#{msg['project.mark']}</th>
+							<th>#{msg['project.status']}</th>
+							<th>#{msg['project.actions']}</th>
+						</tr>
+						<ui:repeat var="project" value="#{myProjectsBean.projectList}">
+							<tr class="even">
+								<td>#{project.projectName}</td>
+								<td>#{project.amount}</td>
+								<td>#{project.duration}</td>
+								<td>#{project.startdate}</td>
+								<td><span class="markTop">#{project.mark}</span></td>
+								<td>#{project.status}</td>
+								<td><a class="expand" href="#">details</a></td>
+							</tr>
+							<tr class="expand-content">
+								<td colspan="9">
+									<div class="expand-content">
+										<div class="expand-content-padding">
+											<h:panelGroup rendered="true">
+												You have no funding offers.
+											</h:panelGroup>
+											<h:panelGroup rendered="true">
+												<table class="sublist">
+													<tr>
+														<th class="funderDetails">Creator Details</th>
+														<th class="projectDetails">Project Details</th>
+													</tr>
+													<tr>
+														<td>
+															<div style="float:left;  margin-right: 10px;">
+																#{project.user.firstname} #{project.user.lastname}<br />
+																#{project.user.street}<br />
+																#{project.user.postalcode} #{project.user.city} 
+															</div>
+															<div style="float:left;">
+																#{project.user.email}<br />
+																#{project.user.phone}
+															</div>
+														</td>
+														<td>
+															start date: #{project.startdate}<br />
+															end date: #{project.enddate}
+														</td>
+													</tr>
+												</table>
+											</h:panelGroup>
+											<h:panelGroup rendered="true">
+												<table class="sublist">
+													<tr>
+														<th colspan="4" align="center">Pending funding offers</th>
+													</tr>
+													<tr>
+														<th>Funder</th>
+														<th>Interest rate</th>
+														<th>Send date</th>
+														<th>Actions</th>
+													</tr>
+													<ui:repeat var="loan" value="#{prject.loans}">
+														<tr>
+															<td>#{loan.user.firstname} #{loan.user.lastname}</td>
+															<td>#{loan.interest_rate}</td>
+															<td>#{loan.project.startdate}</td>
+															<td>
+																<h:form>
+																	<h:commandButton type="SUBMIT" action="#{myProjectsBean.acceptFund(loan)}" value="accept"></h:commandButton> / 
+																	<h:commandButton type="SUBMIT" action="#{myProjectsBean.denieFund(loan)}" value="decline"></h:commandButton>
+																</h:form>
+															</td>
+														</tr>	
+													</ui:repeat>
+												</table>
+											</h:panelGroup>
+										</div>
+									</div>
+								</td>
+							</tr>
+						</ui:repeat>		
+					</table>
+					
 					
 					<table class="highlight">
 						<tr class="odd">

@@ -47,10 +47,10 @@
 								<td colspan="9">
 									<div class="expand-content">
 										<div class="expand-content-padding">
-											<h:panelGroup rendered="false">
+											<h:panelGroup rendered="#{credit.projectStatus.equals('pending')}">
 												Your offer was denied, you aren't allowed to view more details.
 											</h:panelGroup>
-											<h:panelGroup rendered="true">
+											<h:panelGroup rendered="#{credit.projectStatus.equals('accepted')}">
 												<table class="sublist">
 													<tr>
 														<th class="funderDetails">Creator Details</th>
@@ -76,7 +76,7 @@
 													</tr>
 												</table>
 											</h:panelGroup>
-											<h:panelGroup rendered="false">
+											<h:panelGroup rendered="#{credit.projectStatus.equals('denied')}">
 												The project creator has to accept your offer before you are allowed to view the details.
 											</h:panelGroup>
 										</div>

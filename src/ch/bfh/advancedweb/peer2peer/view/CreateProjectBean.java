@@ -1,20 +1,72 @@
 package ch.bfh.advancedweb.peer2peer.view;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.ViewScoped;
+import javax.persistence.EntityManager;
+import javax.persistence.Persistence;
+import javax.persistence.Query;
+
+import ch.bfh.advancedweb.peer2peer.controller.UserController;
+import ch.bfh.advancedweb.peer2peer.model.Project;
+import ch.bfh.advancedweb.peer2peer.model.ProjectStatus;
+import ch.bfh.advancedweb.peer2peer.model.User;
 
 @ManagedBean
 @ViewScoped
 public class CreateProjectBean implements Serializable {
 
+
+	private static final long serialVersionUID = 1L;
+	
+	@ManagedProperty("#{userController}")
+	private UserController userController;
 	
 	private String projectName;
 	private int creditAmount;
 	private int duration;
-	private int income;
-	private int expenses;
+	
+
+	public void setUserController(UserController userController) {
+		this.userController = userController;
+	}
+	private int generateProjectMark()
+	{
+		return 5;
+	}
+	public String create()
+	{
+
+		EntityManager em = Persistence.createEntityManagerFactory(
+				"ch.bfh.advancedweb.peer2peer.model").createEntityManager();
+		
+		Project project = new Project();
+		project.setProjectName(projectName);
+		project.setMark(this.generateProjectMark());
+		project.setAmount(creditAmount);
+		project.setCreationdate(new Date());
+		project.setDuration(duration);
+		project.setEnddate(null);
+		project.setStartdate(null);
+		project.setStatus(ProjectStatus.pending);
+
+		project.setUser(userController.getUser());
+		ArrayList<Project> projects = new ArrayList<Project>();
+		projects.add(project);
+		userController.getUser().setProjects(projects);
+		
+		em.getTransaction().begin();
+		em.persist(userController.getUser());
+		em.getTransaction().commit();
+		
+		System.out.println("created project!!");
+		return "success";
+	}
 	
 	public String getProjectName() {
 		return projectName;
@@ -38,22 +90,6 @@ public class CreateProjectBean implements Serializable {
 
 	public void setDuration(int duration) {
 		this.duration = duration;
-	}
-
-	public int getIncome() {
-		return income;
-	}
-
-	public void setIncome(int income) {
-		this.income = income;
-	}
-
-	public int getExpenses() {
-		return expenses;
-	}
-
-	public void setExpenses(int expenses) {
-		this.expenses = expenses;
 	}
 
 	public void formSubmitListener()

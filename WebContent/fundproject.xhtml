@@ -20,24 +20,63 @@
 
 						<h:outputLabel for="">
 							 #{msg['form.totalFunds']}
-							<h:inputText id="totalFunds" require="true"/>
+							<h:inputText value="#{fundProjectBean.totalFunds}" id="totalFunds" require="true"/>
 						</h:outputLabel>
 						
 						
 						<h:outputLabel for="">
 							#{msg['form.maxPerProject']}
-							<h:inputText id="maxPerProject" require="true"/>
+							<h:inputText value="#{fundProjectBean.maxPerProject}" id="maxPerProject" require="true"/>
 						</h:outputLabel>
 						
 
-						<h:commandButton type="submit" value="#{msg['form.search']}">
-							<f:ajax execute="@form" render="@form" />
+						<h:commandButton type="submit" value="#{msg['form.search']}" action="#{fundProjectBean.search}">
 						</h:commandButton>
 
 					</h:form>
 					<div class="clear" />
 					
 					
+					<h:panelGroup id="searchResults">
+					    <h:dataTable class="highlight" rendered="#{not empty fundProjectBean.projects}"
+					        value="#{fundProjectBean.projects}"
+					        var="results"
+					        rowClasses="odd,even"
+					    >
+					    	
+					        <h:column>
+					        	<f:facet name="header">#{msg['project.id']}</f:facet>
+					        	#{results.id}
+					        </h:column>
+					        <h:column>
+					        	<f:facet name="header">#{msg['project.name']}</f:facet>
+					        	#{results.projectName}
+					        </h:column>
+					        <h:column>
+					        	<f:facet name="header">#{msg['project.amount']}</f:facet>
+					        	#{results.amount}
+					        </h:column>
+					        <h:column>
+					        	<f:facet name="header">#{msg['project.duration']}</f:facet>
+					        	#{results.duration}
+					        </h:column>
+					        <h:column>
+					        	<f:facet name="header">#{msg['project.mark']}</f:facet>
+					        	#{results.mark}
+					        </h:column>
+					        <h:column>
+					        	<f:facet name="header">#{msg['project.fundThis']}</f:facet>
+					        	<h:form class="basicForm singleLineForm">
+					        		<h:inputText id="fundRate" value="#{fundProjectBean.fundRate}" style="width:20px"></h:inputText>
+									<h:commandButton type="submit" action="#{fundProjectBean.fund(results)}" value="#{msg['link.send']}">
+										<!-- <f:param name="projectToFund" value="results.id" /> -->
+										
+									</h:commandButton>
+								</h:form>
+					        </h:column>
+					    </h:dataTable>
+					</h:panelGroup>
+					<h:outputText value="Table is empty!" rendered="#{empty fundProjectBean.projects}" />
 					<table class="highlight">
 						<tr class="odd">
 							<th>#{msg['project.id']}</th>

@@ -18,27 +18,11 @@
 					
 					<h1 class="header"><span class="highlight">#{msg['page.myCredits.title']}</span></h1>
 					<h2 class="header">#{msg['page.myCredits.subtitle']}</h2>
-					<p class="description">#{msg['page.myCredits.description']}</p>
-					
-					<h:form id="form" class="basicForm singleLineForm">
-						<div class="formGroup">
-							<h3 class="title">#{msg['page.myCredits.projectStatusTitle']}</h3>
-							<h:outputLabel><input type="checkbox" name="statusPending" checked="checked" /> #{msg['form.active']}</h:outputLabel>
-							<h:outputLabel><input type="checkbox" name="statusActive" checked="checked" /> #{msg['form.finished']}</h:outputLabel>
-							<h:outputLabel><input type="checkbox" name="statusFinished" checked="checked" /> #{msg['form.pending']}</h:outputLabel>
-						</div>
-						<div class="formGroup">
-							<h3 class="title">#{msg['page.myCredits.fundingStatusTitle']}</h3>
-							<h:outputLabel><input type="checkbox" name="statusPending" checked="checked" /> #{msg['form.accepted']}</h:outputLabel>
-							<h:outputLabel><input type="checkbox" name="statusActive" checked="checked" /> #{msg['form.declined']}</h:outputLabel>
-							<h:outputLabel><input type="checkbox" name="statusFinished" checked="checked" /> #{msg['form.pending']}</h:outputLabel>
-						</div>
-					</h:form>
+					<p class="description">#{msg['page.myCredits.description']}</p>		
 					
 					
 					<table class="highlight">
 						<tr class="odd">
-							<th>#{msg['project.id']}</th>
 							<th>#{msg['project.name']}</th>
 							<th>#{msg['project.amount']}</th>
 							<th>#{msg['project.interestRate']}</th>
@@ -48,108 +32,58 @@
 							<th>#{msg['form.fundingStatus']}</th>
 							<th>#{msg['project.actions']}</th>
 						</tr>
-						<tr class="even">
-							<td>1</td>
-							<td>Some stuff I wanna do</td>
-							<td>300'000 $</td>
-							<td>1.5%</td>
-							<td>2 years</td>
-							<td><span class="markTop">10</span></td>
-							<td>pending</td>
-							<td>denied</td>
-							<td><a class="expand" href="#">details</a></td>
-						</tr>
-						<tr class="expand-content">
-							<td colspan="9">
-								<div class="expand-content">
-									<div class="expand-content-padding">
-									Your offer was denied, you aren't allowed to view more details.
+						<ui:repeat var="credit" value="#{myCreditsBean.creditList}">
+							<tr class="even">
+								<td>#{credit.projectName}</td>
+								<td>#{credit.amount}</td>
+								<td>#{credit.interest_rate}</td>
+								<td>#{credit.duration}</td>
+								<td><span class="markTop">#{credit.mark}</span></td>
+								<td>#{credit.projectStatus}</td>
+								<td>#{credit.loanStatus}</td>
+								<td><a class="expand" href="#">details</a></td>
+							</tr>
+							<tr class="expand-content">
+								<td colspan="9">
+									<div class="expand-content">
+										<div class="expand-content-padding">
+											<h:panelGroup rendered="false">
+												Your offer was denied, you aren't allowed to view more details.
+											</h:panelGroup>
+											<h:panelGroup rendered="true">
+												<table class="sublist">
+													<tr>
+														<th class="funderDetails">Creator Details</th>
+														<th class="projectDetails">Project Details</th>
+													</tr>
+													<tr>
+														<td>
+															<div style="float:left;  margin-right: 10px;">
+																#{credit.firstname} #{credit.lastname}<br />
+																#{credit.street}<br />
+																#{credit.postalcode} #{credit.city} 
+															</div>
+															<div style="float:left;">
+																#{credit.email}<br />
+																#{credit.phone}
+															</div>
+														</td>
+														<td>
+															interest rate: #{credit.email}<br />
+															start date: #{credit.startdate}<br />
+															end date: #{credit.enddate}
+														</td>
+													</tr>
+												</table>
+											</h:panelGroup>
+											<h:panelGroup rendered="false">
+												The project creator has to accept your offer before you are allowed to view the details.
+											</h:panelGroup>
+										</div>
 									</div>
-								</div>
-							</td>
-						</tr>
-						<tr class="odd">
-							<td>1</td>
-							<td>I dunno, I need money I guess</td>
-							<td>40'000 $</td>
-							<td>1.5%</td>
-							<td>5 years</td>
-							<td><span class="markLow">3</span></td>
-							<td>active</td>
-							<td>accepted</td>
-							<td><a class="expand" href="#">details</a></td>
-						</tr>
-						<tr class="expand-content">
-							<td colspan="9">
-								<div class="expand-content">
-									<div class="expand-content-padding">
-									
-										<table class="sublist">
-											<tr>
-												<th class="funderDetails">Creator Details</th>
-												<th class="projectDetails">Project Details</th>
-											</tr>
-											<tr>
-												<td>
-													<div style="float:left;  margin-right: 10px;">
-														Firstname Lastname<br />
-														Street 22<br />
-														CHE-3000
-													</div>
-													<div style="float:left;">
-														mail@example.com<br />
-														031 321 32 10
-													</div>
-												</td>
-												<td>
-													interest rate: 1.5%<br />
-													start date: 21.2.11<br />
-													end date: 12.10.12
-												</td>
-											</tr>
-										</table>
-									</div>
-								</div>
-							</td>
-						</tr>
-						<tr class="even">
-							<td>1</td>
-							<td>Some stuff I wanna do</td>
-							<td>300'000 $</td>
-							<td>1.5%</td>
-							<td>2 years</td>
-							<td><span class="markTop">10</span></td>
-							<td>pending</td>
-							<td>pending</td>
-							<td><a class="expand" href="#">details</a></td>
-						</tr>
-						<tr class="expand-content">
-							<td colspan="9">
-								<div class="expand-content">
-									<div class="expand-content-padding">
-									The project creator has to accept your offer before you are allowed to view the details.
-									</div>
-								</div>
-							</td>
-						</tr>
-						<tr class="odd">
-							<td>1</td>
-							<td>Sample name</td>
-							<td>400'000 $</td>
-							<td>1.5%</td>
-							<td>1 year</td>
-							<td><span class="markMedium">5</span></td>
-							<td>finished</td>
-							<td>denied</td>
-							<td><a class="expand" href="#">details</a></td>
-						</tr>
-						<tr class="expand-content">
-							<td colspan="9">
-								<div class="expand-content">
-									<div class="loading-bar"></div>
-								</div>
-							</td>
-						</tr>
+								</td>
+							</tr>
+						</ui:repeat>		
 					</table>
 					
 					
@@ -270,8 +204,8 @@
 						</tr>
 					</table>	
 					
-					
 					 -->
+					 
 					
 					 
     		</ui:define>

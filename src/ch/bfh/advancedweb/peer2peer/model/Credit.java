@@ -13,8 +13,8 @@ public class Credit {
 	private double interest_rate;
 	private int duration;
 	private int mark;
-	private ProjectStatus projectStatus;
-	private LoanStatus loanStatus;
+	private String projectStatus;
+	private String loanStatus;
 	
 	private String firstname;
 	private String lastname;
@@ -72,19 +72,19 @@ public class Credit {
 		this.mark = mark;
 	}
 
-	public ProjectStatus getProjectStatus() {
+	public String getProjectStatus() {
 		return projectStatus;
 	}
 
-	public void setProjectStatus(ProjectStatus projectStatus) {
+	public void setProjectStatus(String projectStatus) {
 		this.projectStatus = projectStatus;
 	}
 
-	public LoanStatus getLoanStatus() {
-		return loanStatus;
+	public String getLoanStatus() {
+		return loanStatus.toString();
 	}
 
-	public void setLoanStatus(LoanStatus loanStatus) {
+	public void setLoanStatus(String loanStatus) {
 		this.loanStatus = loanStatus;
 	}
 

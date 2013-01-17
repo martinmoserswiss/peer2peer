@@ -61,8 +61,8 @@ public class MyCreditsController implements Serializable {
 				credit.setInterest_rate(loan.getInterest_rate());
 				credit.setDuration(loan.getProject().getDuration());
 				credit.setMark(loan.getProject().getMark());
-				credit.setProjectStatus(loan.getProject().getStatus());
-				credit.setLoanStatus(loan.getStatus());
+				credit.setProjectStatus(loan.getProject().getStatus().toString());
+				credit.setLoanStatus(loan.getStatus().toString());
 				
 				credit.setFirstname(loan.getUser().getFirstname());
 				credit.setLastname(loan.getUser().getLastname());

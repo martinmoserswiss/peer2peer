@@ -30,6 +30,21 @@ public class CreateProjectBean implements Serializable {
 	private String projectName;
 	private int creditAmount;
 	private int duration;
+	private boolean success = false;
+	public boolean isSuccess() {
+		return success;
+	}
+	public void setSuccess(boolean success) {
+		this.success = success;
+	}
+	public String getSuccessMessage() {
+		return successMessage;
+	}
+	public void setSuccessMessage(String successMessage) {
+		this.successMessage = successMessage;
+	}
+
+	private String successMessage;
 	
 
 	public void setUserController(UserController userController) {
@@ -65,6 +80,8 @@ public class CreateProjectBean implements Serializable {
 		em.getTransaction().commit();
 		
 		System.out.println("created project!!");
+		this.successMessage = "test";
+		this.success = true;
 		return "success";
 	}
 	

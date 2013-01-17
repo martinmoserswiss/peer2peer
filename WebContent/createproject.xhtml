@@ -15,10 +15,17 @@
  			
     		<ui:define name="content">
 					
+					<h:outputScript rendered="#{createProjectBean.success}">
+		 				$(function(){
+		 					alertHandler.display("success", "#{createProjectBean.successMessage}", 500);
+		 				});
+		 			</h:outputScript>
+					
 					<h1 class="header">#{msg['page.createProject.title']}</h1>
 					<h2 class="header">#{msg['page.createProject.subtitle']}</h2>
 					<p class="description">#{msg['page.createProject.description']}</p>
 					<h:form id="form" class="basicForm">
+					
 						<blockquote style="clear:both;">
 							<h:outputLabel for="">#{msg['form.projectName']}</h:outputLabel>
 							<h:inputText id="projectName" value="#{createProjectBean.projectName}" required="true" styleClass="#{component.valid ? '' : 'error'}">
@@ -44,10 +51,12 @@
 							
 						<blockquote style="clear:both;">
 							
-				 			<h:commandButton id="formSubmit" type="submit"
-							value="#{msg['form.createProjectSubmit']}" action="#{createProjectBean.create}">
-								<f:ajax execute="@form" render="@form"  />
+				 			
+							<h:commandButton id="formSubmit" type="submit"
+							value="#{msg['form.createProjectSubmit']}" action="#{createProjectBean.create()}">
 							</h:commandButton> 
+							
+							<h:outputText value="#{createProjectBean.successMessage}"/>
 						</blockquote>
 					</h:form>	
     		</ui:define>

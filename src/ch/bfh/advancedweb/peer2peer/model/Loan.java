@@ -20,7 +20,7 @@ public class Loan implements Serializable {
 	@Id
 	@GeneratedValue(strategy = IDENTITY)
 	private long id;
-	private double interest_rate; // Zinssatz
+	private double interest_rate;
 	@Enumerated(EnumType.STRING)
     private LoanStatus status;
 	private static final long serialVersionUID = 1L;

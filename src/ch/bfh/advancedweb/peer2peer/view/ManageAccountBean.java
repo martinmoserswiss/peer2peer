@@ -42,6 +42,7 @@ public class ManageAccountBean implements Serializable {
 	private int existing_credits;
 	
 	
+	
 	@ManagedProperty("#{userController}")
 	private UserController userController;
 	private ManageAccountController manageAccountController;
@@ -52,7 +53,7 @@ public class ManageAccountBean implements Serializable {
 		
 	}
 	
-	public void changePassword(){
+	public String changePassword(){
 		
 		if(this.userController.getUser().getPassword().equals(this.old_password)){
 			if(this.getNew_password().equals(this.getC_new_password())){
@@ -71,6 +72,8 @@ public class ManageAccountBean implements Serializable {
 		else{
 			// TODO: Give an error-message, that something went wrong (wrong password)
 		}
+		
+		return "home";
 	}
 	
 	public void loadContactInformation(){

@@ -2,8 +2,11 @@ package ch.bfh.advancedweb.peer2peer.view;
 
 import java.io.Serializable;
 import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
@@ -50,20 +53,24 @@ public class RegisterBean implements Serializable {
 		
 	}
 	
-	public void register(){
+	public String register() throws ParseException{
 		
 		User user = new User();
 		
 		//TODO: Password & Email Vergleich
 		//TODO: Datum aus Birthday1, 2, 3 erstellen
-		Date birthdate = new Date(this.birthdate1,this.birthdate2,this.birthdate3);
+		SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy");
+		Date birthdate = sdf.parse(this.birthdate1+"."+this.birthdate2+"."+this.birthdate3);
 		
 		user.setEmail(this.email);
 		user.setPassword(this.password);
 		user.setFirstname(this.firstname);
 		user.setLastname(this.lastname);
 		user.setBirthdate(birthdate);
-		user.setCountry(this.country);
+		
+		if(this.country.equals("CH"))user.setCountry("Schweiz");
+		else user.setCountry("Deutschland (Bundesrep.)");
+
 		user.setCity(this.city);
 		user.setStreet(this.street);
 		user.setPostalcode(this.postalcode);
@@ -76,6 +83,8 @@ public class RegisterBean implements Serializable {
 		
 		this.registerController = new RegisterController();
 		this.registerController.register(user);
+		
+		return "login";
 		
 	}
 

@@ -73,12 +73,12 @@
 
 						<blockquote style="clear:both;">
 							<h:outputLabel for="">#{msg['form.country']}</h:outputLabel>
-							<select value="#{manageAccountBean.country}" id="question1" name="country" tabindex="10" class="text">
-
-								<option value="CHE">Schweiz</option>
-								<option value="DEU">Deutschland (Bundesrep.)</option>
-
-							</select>
+							
+				   		<h:selectOneMenu value="#{manageAccountBean.country}"  name="country" tabindex="10" class="text">
+				   			<f:selectItem  itemValue="CH" itemLabel="Schweiz" />
+				   			<f:selectItem itemValue="DE" itemLabel="Deutschland (Bundesrep.)" />
+			   			</h:selectOneMenu>
+					   		
 						</blockquote>
 
 						<blockquote style="clear:both;">

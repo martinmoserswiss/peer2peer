@@ -50,9 +50,25 @@ public class CreateProjectBean implements Serializable {
 	public void setUserController(UserController userController) {
 		this.userController = userController;
 	}
-	private int generateProjectMark()
+	private int generateProjectMark(int amount, int duration)
 	{
-		return 5;
+		double income = userController.getUser().getIncome();
+		double expenses = userController.getUser().getExpenses();
+		int existingCredits = userController.getUser().getExsisting_credits();
+		
+		double netIncome = income-expenses;
+		
+		double fluidityOverTimeFrame = netIncome*duration;
+		
+		if(fluidityOverTimeFrame > amount)
+		{
+			double fluidityAfterPayment = fluidityOverTimeFrame-amount;
+			
+			return (int)fluidityAfterPayment/(int)netIncome*10;
+		}
+			
+		
+		return 1;
 	}
 	public String create()
 	{
@@ -62,7 +78,7 @@ public class CreateProjectBean implements Serializable {
 		
 		Project project = new Project();
 		project.setProjectName(projectName);
-		project.setMark(this.generateProjectMark());
+		project.setMark(this.generateProjectMark(creditAmount, duration));
 		project.setAmount(creditAmount);
 		project.setCreationdate(new Date());
 		project.setDuration(duration);

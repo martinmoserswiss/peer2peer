@@ -20,6 +20,10 @@ import ch.bfh.advancedweb.peer2peer.model.User;
 
 @ManagedBean
 @SessionScoped
+/**
+ * Session scoped controller to store the currently logged in user
+ *
+ */
 public class UserController implements Serializable {
 	
 	
@@ -38,6 +42,12 @@ public class UserController implements Serializable {
 		this.entityManager = entityManager;
 	}
 	
+	/**
+	 * logs in the user with email and password if he exists
+	 * @param email
+	 * @param password
+	 * @return
+	 */
 	public boolean login(String email, String password){
 		
 		entityManager = Persistence.createEntityManagerFactory(
@@ -61,6 +71,10 @@ public class UserController implements Serializable {
 		else return false;
 	}
 	
+	/**
+	 * kills the current session, thus logging out the current user.
+	 * @return
+	 */
 	public String logout() {
 	    ((HttpSession) FacesContext.getCurrentInstance().getExternalContext()
 	         .getSession(true)).invalidate();

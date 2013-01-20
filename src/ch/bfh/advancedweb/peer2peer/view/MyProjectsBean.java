@@ -27,6 +27,10 @@ import ch.bfh.advancedweb.peer2peer.model.User;
 
 @ManagedBean
 @ViewScoped
+/**
+ * backing bean for the my projects page
+ *
+ */
 public class MyProjectsBean implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -41,18 +45,30 @@ public class MyProjectsBean implements Serializable {
 		System.out.println("hello");
 	}
 	
+	/**
+	 * loads all the projects of the currently logged in user
+	 */
 	public void loadProjects(){
-		System.out.println("fuck you");
 		this.myProjectsController = new MyProjectsController();
 		this.projectList = this.myProjectsController.loadProjects(this.userController.getUser());
 		
 	}
 	
+	/**
+	 * accepts the loan given as parameter and declines every other loan for that project
+	 * @param loan
+	 * @return
+	 */
 	public String acceptFund(Loan loan){
 		this.myProjectsController.acceptFund(loan);
 		return "myprojects";
 	}
 	
+	/**
+	 * denies the loan given in the parameter
+	 * @param loan
+	 * @return
+	 */
 	public String denieFund(Loan loan){
 		this.myProjectsController.denieFund(loan);
 		return "myprojects";

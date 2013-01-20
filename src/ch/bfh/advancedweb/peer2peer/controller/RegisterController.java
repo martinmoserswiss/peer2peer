@@ -21,6 +21,10 @@ import ch.bfh.advancedweb.peer2peer.model.User;
 
 @ManagedBean
 @SessionScoped
+/**
+ * controls the registration process
+ *
+ */
 public class RegisterController implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -33,6 +37,11 @@ public class RegisterController implements Serializable {
 		
 	}
 	
+	/**
+	 * adds the user entity to the database
+	 * @param user
+	 * @return
+	 */
 	public boolean register(User user){
 	
 		this.entityManager = Persistence.createEntityManagerFactory(

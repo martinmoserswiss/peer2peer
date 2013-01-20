@@ -10,6 +10,10 @@ import ch.bfh.advancedweb.peer2peer.controller.UserController;
 
 @ManagedBean
 @SessionScoped
+/**
+ * backing bean to control the login process
+ *
+ */
 public class LoginBean implements Serializable {
 	
 	

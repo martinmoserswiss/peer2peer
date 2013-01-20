@@ -18,6 +18,10 @@ import ch.bfh.advancedweb.peer2peer.model.User;
 
 @ManagedBean
 @SessionScoped
+/**
+ * backing bean for the manage account page
+ *
+ */
 public class ManageAccountBean implements Serializable {
 
 	private static final long serialVersionUID = 1L;

@@ -21,6 +21,10 @@ import ch.bfh.advancedweb.peer2peer.model.User;
 
 @ManagedBean
 @SessionScoped
+/**
+ * controls the management of the user data
+ *
+ */
 public class ManageAccountController implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -32,7 +36,11 @@ public class ManageAccountController implements Serializable {
 	public ManageAccountController(){
 		
 	}
-	
+	/**
+	 * changes the password of user
+	 * @param user
+	 * @return
+	 */
 	public boolean changePassword(User user){
 	
 		this.entityManager = Persistence.createEntityManagerFactory(

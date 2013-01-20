@@ -20,6 +20,10 @@ import ch.bfh.advancedweb.peer2peer.model.User;
 
 @ManagedBean
 @SessionScoped
+/**
+ * backing bean for the registration page
+ *
+ */
 public class RegisterBean implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -53,6 +57,11 @@ public class RegisterBean implements Serializable {
 		
 	}
 	
+	/**
+	 * registers a new user given the data in this bean
+	 * @return
+	 * @throws ParseException
+	 */
 	public String register() throws ParseException{
 		
 		User user = new User();

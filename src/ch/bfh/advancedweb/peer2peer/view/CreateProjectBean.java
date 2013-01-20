@@ -19,6 +19,10 @@ import ch.bfh.advancedweb.peer2peer.model.User;
 
 @ManagedBean
 @ViewScoped
+/**
+ * Backing bean for the Create a Project page
+ *
+ */
 public class CreateProjectBean implements Serializable {
 
 
@@ -70,6 +74,11 @@ public class CreateProjectBean implements Serializable {
 		
 		return 1;
 	}
+	
+	/**
+	 * creates a new project by the currently logged in user
+	 * @return
+	 */
 	public String create()
 	{
 
@@ -125,9 +134,5 @@ public class CreateProjectBean implements Serializable {
 		this.duration = duration;
 	}
 
-	public void formSubmitListener()
-	{
-		//TODO
-	}
 	
 }

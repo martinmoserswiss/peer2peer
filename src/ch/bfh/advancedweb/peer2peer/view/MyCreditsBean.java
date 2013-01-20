@@ -21,6 +21,10 @@ import ch.bfh.advancedweb.peer2peer.model.User;
 
 @ManagedBean
 @SessionScoped
+/**
+ * backing bean for the my credits page
+ *
+ */
 public class MyCreditsBean implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -35,6 +39,9 @@ public class MyCreditsBean implements Serializable {
 		
 	}
 	
+	/**
+	 * loads all the credits of the currently logged in user
+	 */
 	public void loadCredits(){
 		this.myCreditsController = new MyCreditsController();
 		this.creditList = this.myCreditsController.loadCredits(this.userController.getUser());

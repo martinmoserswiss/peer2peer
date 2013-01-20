@@ -26,6 +26,10 @@ import ch.bfh.advancedweb.peer2peer.model.User;
 
 @ManagedBean
 @SessionScoped
+/**
+ * controller for the credits of a user
+ *
+ */
 public class MyCreditsController implements Serializable {
 
 	private static final long serialVersionUID = 1L;

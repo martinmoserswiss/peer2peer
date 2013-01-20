@@ -21,6 +21,10 @@ import ch.bfh.advancedweb.peer2peer.model.User;
 
 @ManagedBean
 @ViewScoped
+/**
+ * The backing bean for the fund a project page
+ *
+ */
 public class FundProjectBean implements Serializable {
 
 
@@ -63,6 +67,10 @@ public class FundProjectBean implements Serializable {
 		this.userController = userController;
 	}
 	
+	/**
+	 * requests a new result list of projects given the filter settings
+	 * @return
+	 */
 	public String search()
 	{
 		EntityManager em = Persistence.createEntityManagerFactory(
@@ -77,7 +85,11 @@ public class FundProjectBean implements Serializable {
 		return "success";
 	}
 	
-	//is this possible?
+	/**
+	 * funds the project given as parameter
+	 * @param p the project to fund
+	 * @return
+	 */
 	public String fund(Project p) {
 
 		EntityManager em = Persistence.createEntityManagerFactory(

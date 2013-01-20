@@ -16,6 +16,10 @@ import javax.faces.context.FacesContext;
 
 @ManagedBean(name="lang")
 @SessionScoped
+/**
+ * bean to hold locale data
+ *
+ */
 public class LanguageBean implements Serializable {
 
 	private Locale locale = FacesContext.getCurrentInstance().getViewRoot().getLocale();
